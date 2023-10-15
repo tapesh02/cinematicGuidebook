@@ -9,12 +9,9 @@ export const customTheme = () => {
             secondary: {
                 main: "#F2F2F2",
             },
-            text: {
-                secondary: "#0D0D0D",
-            },
-            grey: {
-                A700: "#0D0D0D",
-            },
+        },
+        typography: {
+            fontFamily: "Montserrat, sans-serif",
         },
         components: {
             MuiButton: {
