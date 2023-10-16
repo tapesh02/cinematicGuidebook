@@ -3,6 +3,9 @@ import { createTheme } from "@mui/material/styles";
 export const customTheme = () => {
     return createTheme({
         palette: {
+            text: {
+                primary: "#ffff",
+            },
             primary: {
                 main: "#DD0707",
             },
@@ -17,8 +20,15 @@ export const customTheme = () => {
             MuiButton: {
                 styleOverrides: {
                     outlinedSecondary: {
-                        borderColor: "#0D0D0D",
-                        color: "inherit",
+                        borderColor: "transparent",
+                        color: "white",
+                    },
+                },
+            },
+            MuiAppBar: {
+                styleOverrides: {
+                    root: {
+                        boxShadow: "none",
                     },
                 },
             },

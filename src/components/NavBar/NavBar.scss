@@ -1,0 +1,14 @@
+.appBar {
+    padding-top: 0.5rem;
+    .toolBar {
+        display: flex;
+        justify-content: space-between;
+
+        img {
+        }
+        .navBar {
+            display: flex;
+            gap: 0.5em;
+        }
+    }
+}

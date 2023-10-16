@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Checkbox, FormControl, Stack, TextField } from "@mui/material";
+import { Button, Checkbox, Stack, TextField } from "@mui/material";
 
 const ThemeTemplate = () => {
     const label = { inputProps: { "aria-label": "Checkbox demo" } };

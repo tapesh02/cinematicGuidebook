@@ -1,0 +1,20 @@
+.homeBg {
+    //     border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    h4 {
+        font-weight: 700;
+    }
+
+    span {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    .exploreBtn {
+        padding: 0.5em 0;
+    }
+}

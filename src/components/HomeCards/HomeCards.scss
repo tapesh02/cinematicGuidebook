@@ -1,0 +1,24 @@
+.homeCardsBg {
+    background-color: rgba(44, 44, 44, 0.288);
+    width: 80%;
+    height: auto;
+    padding: 1em;
+    margin-top: 3em;
+    border-radius: 10px;
+
+    .cardMain {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .card {
+        width: 15%;
+
+        .cardImg {
+            height: 13em;
+        }
+    }
+}
