@@ -17,3 +17,13 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+@import "./components/NavBar/NavBar";
+@import "./components/HomeCards/HomeCards";
+@import "./components/pages/Contact/Contact";
+@import "./components/pages/Error/Error";
+@import "./components/pages/Home/Home";
+@import "./components/pages/JoinUs/JoinUs";
+@import "./components/pages/Movies/Movies";
+@import "./components/pages/SignIn/SignIn";
+@import "./components/pages/TvShows/TvShows";

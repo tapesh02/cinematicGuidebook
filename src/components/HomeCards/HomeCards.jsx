@@ -1,5 +1,4 @@
 import React from "react";
-import "./HomeCards.scss";
 import cardData from "./carddata";
 import { Card, CardMedia } from "@mui/material";
 

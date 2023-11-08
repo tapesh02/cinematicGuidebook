@@ -9,11 +9,9 @@ const theme = customTheme();
 
 const App = () => {
     return (
-        <>
-            <ThemeProvider theme={theme}>
-                <RouteLinks />
-            </ThemeProvider>
-        </>
+        <ThemeProvider theme={theme}>
+            <RouteLinks />
+        </ThemeProvider>
     );
 };
 export default App;
