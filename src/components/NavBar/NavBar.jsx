@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NavBar.scss";
 import logo from "../../assets/logos/TransparentLogo.svg";
 
-import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Container, Toolbar  } from "@mui/material";
 
 const NavBar = () => {
     const pageLinks = ["Home", "Movies", "Shows"];

@@ -32,6 +32,13 @@ export const customTheme = () => {
                     },
                 },
             },
+            MuiCard: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "black",
+                    },
+                },
+            },
         },
     });
 };
