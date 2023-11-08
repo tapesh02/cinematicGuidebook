@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import logo from "../../assets/logos/TransparentLogo.svg";
 
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    const pageLinks = ["Home", "Movies", "Shows"];
+    const pageLinks = ["Home", "Movies", "TvShows", "Profile"];
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
@@ -17,20 +18,24 @@ const NavBar = () => {
                     {isLoggedIn && (
                         <Box className="navBar">
                             {pageLinks.map((page) => (
-                                <Button variant="outlined" color="secondary" key={page}>
-                                    {page}
-                                </Button>
+                                <NavLink to={page.toLocaleLowerCase()} key={page}>
+                                    <Button variant="outlined" color="secondary">
+                                        {page}
+                                    </Button>
+                                </NavLink>
                             ))}
                         </Box>
                     )}
-                    <Box className="navBar">
-                        <Button variant="outlined" color="secondary">
-                            Sign In
-                        </Button>
-                        <Button variant="contained" color="secondary">
-                            Join Us
-                        </Button>
-                    </Box>
+                    {!isLoggedIn && (
+                        <Box className="navBar">
+                            <Button variant="outlined" color="secondary" onClick={() => setIsLoggedIn(true)}>
+                                Sign In
+                            </Button>
+                            <Button variant="contained" color="secondary">
+                                Join Us
+                            </Button>
+                        </Box>
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>
