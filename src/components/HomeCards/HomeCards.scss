@@ -7,15 +7,20 @@
     border-radius: 10px;
 
     .cardMain {
-        display: flex;
-        flex-wrap: wrap;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: center;
+        // align-items: center;
+        // gap: 1em;
         justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 130px);
         align-items: center;
         gap: 1em;
     }
 
     .card {
-        width: 15%;
+        // width: 15%;
 
         .cardImg {
             height: 13em;

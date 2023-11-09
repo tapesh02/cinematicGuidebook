@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logos/TransparentLogo.svg";
 
+import { FaUserCircle } from "react-icons/fa";
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
-import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    const pageLinks = ["Home", "Movies", "TvShows", "Profile"];
+    const pageLinks = ["Home", "Movies", "TvShows"];
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
@@ -24,6 +25,7 @@ const NavBar = () => {
                                     </Button>
                                 </NavLink>
                             ))}
+                            <FaUserCircle />
                         </Box>
                     )}
                     {!isLoggedIn && (
