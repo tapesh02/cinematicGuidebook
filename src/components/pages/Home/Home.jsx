@@ -6,6 +6,7 @@ import HomeCards from "../../HomeCards/HomeCards";
 const Home = () => {
     return (
         <>
+            <div className="homeBgOverlay"></div>
             <div className="homeBg">
                 <Box>
                     <Typography variant="h4">Igniting Your Passion for Movies,</Typography>

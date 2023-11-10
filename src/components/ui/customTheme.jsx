@@ -39,6 +39,39 @@ export const customTheme = () => {
                     },
                 },
             },
+            MuiTextField: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "#ffff",
+                        color: "#000000",
+                        height: "3em",
+                        borderRadius: "7px",
+                        "&:hover": {
+                            "& label.MuiInputLabel-shrink:not(.Mui-error)": {
+                                color: "#000000",
+                                borderColor: "#000000",
+                            },
+                        },
+                        "& div:not(.Mui-error) > fieldset": {
+                            borderColor: "transparent",
+                        },
+                    },
+                },
+            },
+            MuiInputBase: {
+                styleOverrides: {
+                    input: {
+                        color: "#000000",
+                    },
+                },
+            },
+            MuiFormLabel: {
+                styleOverrides: {
+                    focused: {
+                        color: "#000000",
+                    },
+                },
+            },
         },
     });
 };

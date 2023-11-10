@@ -1,0 +1,86 @@
+.signinBgOverlay {
+    background: url("../../../assets/images/movieposters.png");
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: color;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: -2;
+}
+
+.signinBg {
+    background: #000000;
+    opacity: 0.85;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 89.3vh;
+    z-index: -1;
+    padding-top: 4em;
+}
+
+.headerSection {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 1.5em 0;
+    .header {
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.04em;
+    }
+}
+
+.signinSections {
+    box-sizing: border-box;
+    background-color: #000000;
+    width: 50%;
+    margin: auto;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+
+    .signinSection1 {
+        width: 100%;
+        text-align: center;
+        padding: 1em 0;
+        .fromTitle {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+    .signinSection2 {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .signinSection3 {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .checkbox {
+            svg {
+                outline: 1px solid white;
+                border-radius: 50%;
+            }
+        }
+    }
+    .signinSection4 {
+        width: 80%;
+        button {
+            width: 100%;
+            height: 3em;
+        }
+    }
+}

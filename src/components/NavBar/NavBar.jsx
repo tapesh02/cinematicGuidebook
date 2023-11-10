@@ -30,9 +30,11 @@ const NavBar = () => {
                     )}
                     {!isLoggedIn && (
                         <Box className="navBar">
-                            <Button variant="outlined" color="secondary" onClick={() => setIsLoggedIn(true)}>
-                                Sign In
-                            </Button>
+                            <NavLink to={"/signin"}>
+                                <Button variant="outlined" color="secondary">
+                                    Sign In
+                                </Button>
+                            </NavLink>
                             <Button variant="contained" color="secondary">
                                 Join Us
                             </Button>
