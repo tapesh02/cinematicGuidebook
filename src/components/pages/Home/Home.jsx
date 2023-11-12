@@ -1,7 +1,8 @@
 import React from "react";
 import "./Home.scss";
 import { Box, Button, Typography } from "@mui/material";
-import HomeCards from "../../HomeCards/HomeCards";
+import Cards from "../../Cards/Cards.jsx";
+import cardData from "../../Cards/carddata.js";
 
 const Home = () => {
     return (
@@ -25,7 +26,13 @@ const Home = () => {
                         Explore
                     </Button>
                 </Box>
-                <HomeCards />
+                <div className="homeCardsBg">
+                    <div className="cardMain">
+                        {cardData?.map((cardImage, index) => {
+                            return <Cards key={cardImage} cardImage={cardImage} id={index} />;
+                        })}
+                    </div>
+                </div>
             </div>
         </>
     );
