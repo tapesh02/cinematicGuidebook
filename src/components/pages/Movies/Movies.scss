@@ -1,5 +1,27 @@
+.mainMovies {
+    background-image: url("../../../assets/images/starsatnight.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 60vh;
+    z-index: -1;
+}
+
 .moviesBg {
     margin: auto;
     margin-top: 1em;
     background-color: transparent;
+
+    .cardMain {
+        .card {
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0px 1px 1px 1px rgba(185, 185, 185, 0.557);
+            }
+        }
+    }
 }
