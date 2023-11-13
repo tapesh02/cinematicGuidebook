@@ -4,7 +4,6 @@ import Cards from "../../Cards/Cards";
 import { Skeleton } from "@mui/material";
 
 const Movies = () => {
-    const skeletonNunber = 5;
     const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
 
