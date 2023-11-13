@@ -16,6 +16,7 @@ const RouteLinks = () => {
         <>
             <NavBar />
             <Routes>
+                <Route path="/" element={<Home />} />
                 <Route path="home" element={<Home />} />
                 <Route path="*" element={<Error />} />
                 <Route path="themetemplate" element={<ThemeTemplate />} />
