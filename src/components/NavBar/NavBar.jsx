@@ -14,7 +14,9 @@ const NavBar = () => {
             <Container maxWidth="xl">
                 <Toolbar className="toolBar">
                     <Box>
-                        <img src={logo} alt="logo" />
+                        <NavLink to={"/"}>
+                            <img src={logo} alt="logo" />
+                        </NavLink>
                     </Box>
                     {isLoggedIn && (
                         <Box className="navBar">

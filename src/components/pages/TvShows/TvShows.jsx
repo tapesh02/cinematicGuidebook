@@ -31,7 +31,7 @@ const TvShows = () => {
                 setIsLoading(false);
             }
         } catch (error) {
-            console.log("can not fetch movies");
+            console.log("can not fetch tvShows");
         }
     };
 
