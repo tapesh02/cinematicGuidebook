@@ -6,15 +6,30 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 98vw;
     height: 60vh;
     z-index: -1;
+}
+
+.movieMainSkeleton {
+    width: 100%;
+    box-sizing: border-box;
+    .movieSkeleton {
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        width: 60%;
+        justify-content: flex-start;
+        gap: 1em;
+        border-radius: 5px;
+    }
 }
 
 .moviesBg {
     margin: auto;
     margin-top: 1em;
     background-color: transparent;
+    box-sizing: border-box;
 
     .cardMain {
         .card {

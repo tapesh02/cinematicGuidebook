@@ -67,8 +67,10 @@ export const customTheme = () => {
             },
             MuiFormLabel: {
                 styleOverrides: {
-                    focused: {
-                        color: "#000000",
+                    root: {
+                        "&.Mui-focused": {
+                            color: "#000000",
+                        },
                     },
                 },
             },

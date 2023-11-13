@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "../../Cards/Cards";
+import { Skeleton } from "@mui/material";
 
 const Movies = () => {
+    const skeletonNunber = 5;
     const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
 
@@ -20,7 +22,7 @@ const Movies = () => {
                 },
                 headers: {
                     accept: "application/json",
-                    Authorization: `Bearer${process.env.REACT_APP_API_KEY}`,
+                    Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
                 },
             };
             const response = await axios.request(requestConfig);
@@ -38,10 +40,20 @@ const Movies = () => {
         fetchMovies();
     }, []);
 
+    const renderSkeleton = () => {
+        const skeletons = [];
+        for (let i = 0; i < 8; i++) {
+            skeletons[i] = <Skeleton key={i} animation="wave" height={200} variant="rectangular" width={130} />;
+        }
+        return skeletons;
+    };
+
     return (
         <>
             {isLoading ? (
-                "Isloading"
+                <div className="movieMainSkeleton">
+                    <div className="movieSkeleton">{renderSkeleton()}</div>
+                </div>
             ) : (
                 <>
                     <div className="mainMovies"></div>
