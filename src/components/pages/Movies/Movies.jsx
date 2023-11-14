@@ -42,7 +42,16 @@ const Movies = () => {
     const renderSkeleton = () => {
         const skeletons = [];
         for (let i = 0; i < 8; i++) {
-            skeletons[i] = <Skeleton key={i} animation="wave" height={200} variant="rectangular" width={130} />;
+            skeletons[i] = (
+                <Skeleton
+                    key={i}
+                    animation="pulse"
+                    height={200}
+                    variant="rectangular"
+                    width={130}
+                    sx={{ animationDuration: "1.5s", borderRadius: "5px" }}
+                />
+            );
         }
         return skeletons;
     };

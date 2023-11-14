@@ -6,7 +6,7 @@ const Cards = (props) => {
 
     return (
         <Card key={id} className="card">
-            <CardMedia className="cardImg" component="img" image={cardImage} alt="cardimage" />
+            <CardMedia className="cardImg" component="img" image={cardImage} alt="cardimage" loading="lazy" />
         </Card>
     );
 };
