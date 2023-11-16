@@ -74,6 +74,13 @@ export const customTheme = () => {
                     },
                 },
             },
+            MuiDrawer: {
+                styleOverrides: {
+                    paper: {
+                        backgroundColor: "transparent",
+                    },
+                },
+            },
         },
     });
 };

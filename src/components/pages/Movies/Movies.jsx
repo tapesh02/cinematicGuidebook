@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 import Cards from "../../Cards/Cards";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import { Skeleton } from "@mui/material";
 
 const Movies = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
 
@@ -65,7 +72,7 @@ const Movies = () => {
             ) : (
                 <>
                     <div className="mainMovies"></div>
-                    <div className="homeCardsBg moviesBg">
+                    <div className={`cardsBg moviesBg ${isMobile ? "mcardBg" : ""}`}>
                         <div className="cardMain">
                             {movies?.map((movie) => {
                                 const { poster_path, id } = movie;
