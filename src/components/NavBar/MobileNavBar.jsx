@@ -1,5 +1,7 @@
 // @ts-nocheck
 import * as React from "react";
+import { NavLink } from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -10,7 +12,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
-import { AiFillHome, AiFillContacts, AiOutlineTeam } from "react-icons/ai";
+import logo from "../../assets/logos/TextLogo.svg";
+
+import { AiFillHome, AiFillContacts, AiOutlineTeam, AiOutlineSearch } from "react-icons/ai";
 import { BsFillAwardFill, BsMenuButtonWideFill } from "react-icons/bs";
 
 export default function MobileNavBar() {
@@ -82,13 +86,19 @@ export default function MobileNavBar() {
     );
 
     return (
-        <div>
+        <div className="mobileMenu">
             {["left"].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <BsMenuButtonWideFill onClick={toggleDrawer(anchor, true)}>{anchor}</BsMenuButtonWideFill>
+                    <BsMenuButtonWideFill onClick={toggleDrawer(anchor, true)} className="menuIcon">
+                        {anchor}
+                    </BsMenuButtonWideFill>
                     <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
                         {list(anchor)}
                     </Drawer>
+                    <NavLink>
+                        <img src={logo} alt="logo" />
+                    </NavLink>
+                    <AiOutlineSearch className="menuIcon" />
                 </React.Fragment>
             ))}
         </div>
