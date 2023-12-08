@@ -12,6 +12,37 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+$breakpoints: (
+    "small-mobile": 320px,
+    "mobile": 450px,
+    "tablet": 770px,
+    "laptop": 1200px,
+);
+
+@mixin small-mobile {
+    @media only screen and (max-width: map-get($breakpoints, "small-mobile")) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media only screen and (max-width: map-get($breakpoints, "mobile")) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (max-width: map-get($breakpoints, "tablet")) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media only screen and (max-width: map-get($breakpoints, "laptop")) {
+        @content;
+    }
+}
+
 @import "./components/NavBar/NavBar";
 @import "./components/Cards/Cards";
 @import "./components/pages/Contact/Contact";
@@ -21,4 +52,3 @@ code {
 @import "./components/pages/Movies/Movies";
 @import "./components/pages/SignIn/SignIn";
 @import "./components/pages/TvShows/TvShows";
-@import "./Breakpoints.scss";

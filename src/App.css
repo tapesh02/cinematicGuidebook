@@ -1,0 +1,241 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background: black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.appBar {
+  padding-top: 0.5rem;
+}
+.appBar .toolBar {
+  display: flex;
+  justify-content: space-between;
+}
+.appBar .toolBar .navBar {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.iconStyle {
+  color: white;
+}
+
+.mobileMenu {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+.mobileMenu .menuIcon {
+  font-size: 2.2em;
+  padding: 0.5em;
+  padding-left: 1em;
+}
+.mobileMenu :nth-of-type(2) {
+  padding-left: 0.5em;
+  padding-right: 1em;
+}
+.mobileMenu a {
+  margin-right: auto;
+}
+.mobileMenu a img {
+  width: 100%;
+}
+
+.cardsBg {
+  background-color: rgba(44, 44, 44, 0.2862745098);
+  width: 80%;
+  height: auto;
+  padding: 1em;
+  margin-top: 3em;
+  border-radius: 10px;
+}
+.cardsBg .cardMain {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  align-items: center;
+  gap: 1em;
+}
+.cardsBg .card .cardImg {
+  height: 13em;
+}
+
+.mcardBg {
+  width: auto;
+}
+.mcardBg .cardMain {
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+}
+.mcardBg .cardMain .cardImg {
+  height: auto;
+}
+
+.homeBgOverlay {
+  background: url("../../../assets/images/cosmicsatisfaction.png");
+  width: 100%;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: color;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: -1;
+}
+
+.homeBg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+}
+.homeBg h4 {
+  font-weight: 700;
+}
+.homeBg span {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.homeBg .exploreBtn {
+  padding: 0.5em 0;
+}
+
+.mainMovies {
+  background-image: url("../../../assets/images/starsatnight.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98vw;
+  height: 60vh;
+  z-index: -1;
+}
+
+.movieMainSkeleton {
+  width: 100%;
+  box-sizing: border-box;
+}
+.movieMainSkeleton .movieSkeleton {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 80%;
+  padding: 2em;
+  padding-left: 5em;
+  justify-content: flex-start;
+  gap: 1em;
+  border-radius: 5px;
+}
+
+.moviesBg {
+  margin: auto;
+  margin-top: 1em;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.moviesBg .cardMain .card:hover {
+  cursor: pointer;
+  box-shadow: 0px 1px 1px 1px rgba(185, 185, 185, 0.557);
+}
+
+.signinBgOverlay {
+  background: url("../../../assets/images/movieposters.png");
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: color;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: -2;
+}
+
+.signinBg {
+  background: #000000;
+  opacity: 0.85;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 89.3vh;
+  z-index: -1;
+  padding-top: 4em;
+}
+
+.headerSection {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1.5em 0;
+}
+.headerSection .header {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em;
+}
+
+.signinSections {
+  box-sizing: border-box;
+  background-color: #000000;
+  width: 50%;
+  margin: auto;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+}
+@media only screen and (max-width: 450px) {
+  .signinSections {
+    width: 70%;
+  }
+}
+.signinSections .signinSection1 {
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+}
+.signinSections .signinSection1 .fromTitle {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.signinSections .signinSection2 {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.signinSections .signinSection3 {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.signinSections .signinSection3 .checkbox svg {
+  outline: 1px solid white;
+  border-radius: 50%;
+}
+.signinSections .signinSection4 {
+  width: 80%;
+}
+.signinSections .signinSection4 button {
+  width: 100%;
+  height: 3em;
+}/*# sourceMappingURL=App.css.map */
