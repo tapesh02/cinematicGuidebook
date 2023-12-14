@@ -46,9 +46,11 @@ const NavBar = () => {
                                             Sign In
                                         </Button>
                                     </NavLink>
-                                    <Button variant="contained" color="secondary">
-                                        Join Us
-                                    </Button>
+                                    <NavLink to={"/joinus"}>
+                                        <Button variant="contained" color="secondary">
+                                            Join Us
+                                        </Button>
+                                    </NavLink>
                                 </Box>
                             )}
                         </Toolbar>
