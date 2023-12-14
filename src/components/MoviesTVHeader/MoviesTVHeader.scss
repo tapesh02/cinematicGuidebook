@@ -1,0 +1,23 @@
+.movieTVHeaderMain {
+    padding: 1.3em;
+    .movieTVheaderText {
+        text-transform: capitalize;
+        text-align: center;
+    }
+}
+.searchInputMain {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 2em;
+
+    .searchInput {
+        width: 80%;
+        padding-left: 1em;
+        height: 2.5em;
+        border-radius: 30px;
+        outline: none;
+        border: none;
+    }
+}

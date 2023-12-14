@@ -6,6 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { Skeleton } from "@mui/material";
+import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 
 const Movies = () => {
     const theme = useTheme();
@@ -73,6 +74,7 @@ const Movies = () => {
                 <>
                     <div className="mainMovies"></div>
                     <div className={`cardsBg moviesBg ${isMobile ? "mcardBg" : ""}`}>
+                        <MoviesTVHeader />
                         <div className="cardMain">
                             {movies?.map((movie) => {
                                 const { poster_path, id } = movie;

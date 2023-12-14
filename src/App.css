@@ -204,6 +204,11 @@ code {
 }
 @media only screen and (max-width: 450px) {
   .signinSections {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .signinSections {
     width: 70%;
   }
 }
@@ -222,11 +227,23 @@ code {
   flex-direction: column;
   gap: 1em;
 }
+@media only screen and (max-width: 450px) {
+  .signinSections .signinSection2 {
+    width: 100%;
+  }
+}
 .signinSections .signinSection3 {
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+@media only screen and (max-width: 450px) {
+  .signinSections .signinSection3 {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5em;
+  }
 }
 .signinSections .signinSection3 .checkbox svg {
   outline: 1px solid white;

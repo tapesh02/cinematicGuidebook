@@ -1,5 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Home.scss";
+
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -27,9 +29,11 @@ const Home = () => {
                     </Typography>
                 </Box>
                 <Box className="exploreBtn">
-                    <Button variant="contained" color="primary">
-                        Explore
-                    </Button>
+                    <NavLink to={"/movies"}>
+                        <Button variant="contained" color="primary">
+                            Explore
+                        </Button>
+                    </NavLink>
                 </Box>
                 <div className={`cardsBg ${isMobile ? "mcardBg" : ""}`}>
                     <div className="cardMain">
