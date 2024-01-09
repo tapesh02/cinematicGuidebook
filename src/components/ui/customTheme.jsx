@@ -81,6 +81,16 @@ export const customTheme = () => {
                     },
                 },
             },
+            MuiToggleButton: {
+                styleOverrides: {
+                    root: {
+                        "&.Mui-selected": {
+                            color: "#ed5e5e",
+                            backgroundColor: "#f9d1d1",
+                        },
+                    },
+                },
+            },
         },
     });
 };
