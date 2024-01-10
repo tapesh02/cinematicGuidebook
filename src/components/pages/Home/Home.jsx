@@ -22,7 +22,7 @@ const Home = () => {
                 </Box>
                 <Box>
                     <Typography variant="subtitle1">
-                        Welcometo <span>cinematickGudiebook</span> where the silver screen comes alive, offering a
+                        Welcome to <span>cinematickGudiebook</span> where the silver screen comes alive, offering a
                         captivating web app
                         <br></br>
                         experience that fuels your love for movies.

@@ -14,7 +14,7 @@ const NavBar = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const pageLinks = ["Home", "Movies", "TvShows"];
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     return (
         <>
@@ -36,7 +36,7 @@ const NavBar = () => {
                                             </Button>
                                         </NavLink>
                                     ))}
-                                    <FaUserCircle />
+                                    <FaUserCircle size={30} />
                                 </Box>
                             )}
                             {!isLoggedIn && (

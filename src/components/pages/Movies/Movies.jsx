@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import Cards from "../../Cards/Cards";
@@ -7,20 +7,27 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { Skeleton } from "@mui/material";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
+import { GlobalContext } from "../../../useContext/Context";
 
 const Movies = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const { searchInput } = useContext(GlobalContext);
 
     const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
+
+    const url = searchInput
+        ? "https://api.themoviedb.org/3/search/movie"
+        : "https://api.themoviedb.org/3/discover/movie";
 
     const fetchMovies = async () => {
         try {
             const requestConfig = {
                 method: "GET",
-                url: "https://api.themoviedb.org/3/discover/movie",
+                url: url,
                 params: {
+                    query: `${searchInput}`,
                     include_adult: "false",
                     include_video: "false",
                     language: "en-US",
@@ -45,7 +52,7 @@ const Movies = () => {
 
     useEffect(() => {
         fetchMovies();
-    }, []);
+    }, [searchInput]);
 
     const renderSkeleton = () => {
         const skeletons = [];

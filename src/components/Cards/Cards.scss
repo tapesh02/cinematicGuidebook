@@ -9,17 +9,9 @@
     .cardMain {
         justify-content: center;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         align-items: center;
         gap: 1em;
-    }
-
-    .card {
-        // width: 15%;
-
-        .cardImg {
-            height: 13em;
-        }
     }
 }
 //mobile styles
@@ -27,7 +19,7 @@
     width: auto;
 
     .cardMain {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         .cardImg {
             height: auto;
         }

@@ -1,12 +1,10 @@
-import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Typography } from "@mui/material";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../useContext/Context";
 
 const MoviesTVHeader = () => {
-    const [alignment, setAlignment] = useState("Movies");
+    const { handleInputChange, searchInput } = useContext(GlobalContext);
 
-    const handleChange = (event, newAlignment) => {
-        setAlignment(newAlignment);
-    };
     return (
         <>
             <div className="movieTVHeaderMain">
@@ -16,22 +14,13 @@ const MoviesTVHeader = () => {
                 </Typography>
             </div>
             <div className="searchInputMain">
-                <input placeholder="Search" className="searchInput" />
-                <ToggleButtonGroup
-                    className="mtvToogleBtns"
-                    color="secondary"
-                    value={alignment}
-                    onChange={handleChange}
-                    exclusive
-                    aria-label="Platform">
-                    <ToggleButton value="Movies" className="mtvToogleBtn">
-                        {" "}
-                        Movies
-                    </ToggleButton>
-                    <ToggleButton value="TV Shows" className="mtvToogleBtn">
-                        TV Shows
-                    </ToggleButton>
-                </ToggleButtonGroup>
+                <input
+                    placeholder="Search"
+                    type="text"
+                    value={searchInput}
+                    className="searchInput"
+                    onChange={handleInputChange}
+                />
             </div>
         </>
     );
