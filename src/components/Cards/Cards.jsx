@@ -6,7 +6,13 @@ const Cards = (props) => {
 
     return (
         <Card key={id} className="card">
-            <CardMedia className="cardImg" component="img" image={cardImage} alt="cardimage" loading="lazy" />
+            <CardMedia
+                className="cardImg"
+                component="img"
+                image={`https://image.tmdb.org/t/p/original/${cardImage}`}
+                alt="cardimage"
+                loading="lazy"
+            />
         </Card>
     );
 };
