@@ -70,7 +70,7 @@ const Home = () => {
                 </Box>
                 <div className={`cardsBg ${isMobile ? "mcardBg" : ""}`}>
                     <div className="cardMain">
-                        {trending?.map((trending) => {
+                        {trending?.slice(0, 10).map((trending) => {
                             const { id, poster_path } = trending;
                             return <Cards key={id} cardImage={poster_path} id={id} />;
                         })}
