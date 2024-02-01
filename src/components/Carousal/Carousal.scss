@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 .carousal-container {
     position: relative;
 
@@ -47,11 +48,33 @@
     }
 
     @keyframes fadeIn {
-        from {
+        0% {
             opacity: 0;
         }
-        to {
+        100% {
             opacity: 1;
         }
     }
+}
+
+.carousal-title {
+    position: absolute;
+    top: 0.5em;
+    left: 1em;
+    color: rgb(242, 242, 242);
+    background-color: rgba(28, 28, 28, 0.845);
+    width: fit-content;
+    padding: 0.1em 0.3em;
+    font-weight: 500;
+}
+
+.carousal-subtitle {
+    position: absolute;
+    top: 5em;
+    left: 2em;
+    color: rgb(242, 242, 242);
+    background-color: rgba(28, 28, 28, 0.845);
+    width: 50%;
+    padding: 0.1em 0.3em;
+    line-height: 1.4em;
 }

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const Carousel = ({ slides }) => {
@@ -28,16 +29,28 @@ const Carousel = ({ slides }) => {
                 <div className="carousal-inner">
                     <div>
                         {slides.map((slide, index) => {
-                            const { backdrop_path, id } = slide;
+                            const { backdrop_path, id, original_title, original_name, overview, vote_average } = slide;
                             const isActive = curLength === index;
                             return (
                                 curLength === index && (
-                                    <img
-                                        key={id}
-                                        className={` ${isActive ? "active" : ""}`}
-                                        src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-                                        alt="img"
-                                    />
+                                    <>
+                                        <img
+                                            key={id}
+                                            className={` ${isActive ? "active" : ""}`}
+                                            src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
+                                            alt="img"
+                                        />
+                                        <Typography
+                                            variant="h4"
+                                            className={`carousal-title ${isActive ? "active" : ""}`}>
+                                            {original_name || original_title}
+                                        </Typography>
+                                        <Typography
+                                            variant="subtitle-1"
+                                            className={`carousal-subtitle ${isActive ? "active" : ""}`}>
+                                            {overview}
+                                        </Typography>
+                                    </>
                                 )
                             );
                         })}
