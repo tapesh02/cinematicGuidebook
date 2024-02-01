@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useTheme } from "@mui/material/styles";
 import Cards from "../../Cards/Cards";
-import { Skeleton, useMediaQuery } from "@mui/material";
+import { Skeleton, Typography, useMediaQuery } from "@mui/material";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
+import Carousel from "../../Carousal/Carousal";
+import { fetchTopRated } from "../../../ApiHelpers";
 
 const TvShows = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const [isLoading, setIsLoading] = useState(true);
     const [tvShows, setTvShows] = useState([]);
+    const [topRated, setTopRated] = useState([]);
 
     const fetchTvShows = async () => {
         try {
@@ -39,8 +42,17 @@ const TvShows = () => {
         }
     };
 
+    const getTopRated = async () => {
+        const _topRated = await fetchTopRated("tv");
+        setTopRated(_topRated);
+    };
+
     useEffect(() => {
         fetchTvShows();
+    }, []);
+
+    useEffect(() => {
+        getTopRated();
     }, []);
 
     const renderSkeleton = () => {
@@ -71,6 +83,9 @@ const TvShows = () => {
                     <div className="mainMovies"></div>
                     <div className={`cardsBg moviesBg ${isMobile ? "mCardBg" : ""}`}>
                         <MoviesTVHeader />
+                        <Typography variant="h6">Top Rated</Typography>
+                        <Carousel slides={topRated} />
+                        <Typography variant="h6">More</Typography>
                         <div className="cardMain">
                             {tvShows?.map((tvshow) => {
                                 const { poster_path, id } = tvshow;

@@ -9,6 +9,7 @@ import { Skeleton, Typography } from "@mui/material";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import { GlobalContext } from "../../../useContext/Context";
 import Carousel from "../../Carousal/Carousal";
+import { fetchTopRated } from "../../../ApiHelpers";
 
 const Movies = () => {
     const theme = useTheme();
@@ -56,26 +57,13 @@ const Movies = () => {
         fetchMovies();
     }, [searchInput]);
 
+    const fetchData = async () => {
+        const _topRated = await fetchTopRated("movie");
+        setTopRated(_topRated);
+    };
+
     useEffect(() => {
-        const fetchTopRated = async () => {
-            try {
-                const requestConfig = {
-                    method: "GET",
-                    url: `${process.env.REACT_APP_BASEPATH}/trending/movie/day`,
-                    params: { language: "en-US" },
-                    headers: {
-                        accept: "application/json",
-                        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-                    },
-                };
-                const response = await axios.request(requestConfig);
-                setTopRated(response.data.results);
-                console.log(response.data.results);
-            } catch (error) {
-                console.log("can not fetch top rated");
-            }
-        };
-        fetchTopRated();
+        fetchData();
     }, []);
 
     const renderSkeleton = () => {
@@ -108,7 +96,7 @@ const Movies = () => {
                         <MoviesTVHeader />
                         <Typography variant="h6">Top Rated</Typography>
                         <Carousel slides={topRated} />
-                        <Typography variant="h6">View All</Typography>
+                        <Typography variant="h6">More</Typography>
                         <div className="cardMain">
                             {movies?.map((movie) => {
                                 const { poster_path, id } = movie;
