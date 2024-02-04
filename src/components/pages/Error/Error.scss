@@ -1,0 +1,27 @@
+.Error {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 5em);
+    position: relative;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        opacity: 0.7;
+    }
+
+    p {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        font-size: 1.2em;
+        background-color: rgba(0, 0, 0, 0.897);
+        padding: 1em;
+
+        a {
+            color: rgb(7, 255, 243);
+        }
+    }
+}

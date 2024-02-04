@@ -30,7 +30,9 @@ const NavBar = () => {
                             {isLoggedIn && (
                                 <Box className="navBar">
                                     {pageLinks.map((page) => (
-                                        <NavLink to={page.toLocaleLowerCase()} key={page}>
+                                        <NavLink
+                                            to={page.toLocaleLowerCase() === "home" ? "/" : page.toLocaleLowerCase()}
+                                            key={page}>
                                             <Button variant="outlined" color="secondary">
                                                 {page}
                                             </Button>

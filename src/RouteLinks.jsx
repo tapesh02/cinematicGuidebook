@@ -17,9 +17,6 @@ const RouteLinks = () => {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="home" element={<Home />} />
-                <Route path="*" element={<Error />} />
-                <Route path="themetemplate" element={<ThemeTemplate />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="movies" element={<Movies />} />
                 <Route path="tvshows" element={<TvShows />} />
@@ -27,6 +24,8 @@ const RouteLinks = () => {
                 <Route path="tvshows/:tvshowsId" element={<TvShows />} />
                 <Route path="signin" element={<SignIn />} />
                 <Route path="joinus" element={<JoinUs />} />
+                <Route path="themetemplate" element={<ThemeTemplate />} />
+                <Route path="*" element={<Error />} />
             </Routes>
         </>
     );
