@@ -1,57 +1,37 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useTheme } from "@mui/material/styles";
-import Cards from "../../Cards/Cards";
-import { Skeleton, Typography, useMediaQuery } from "@mui/material";
-import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../../useContext/Context";
+import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
+
 import Carousel from "../../Carousal/Carousal";
-import { fetchTopRated } from "../../../ApiHelpers";
+import Cards from "../../Cards/Cards";
+import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
+
+import { useTheme } from "@mui/material/styles";
+import { Skeleton, Typography, useMediaQuery } from "@mui/material";
 
 const TvShows = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const { searchInput } = useContext(GlobalContext);
+
     const [isLoading, setIsLoading] = useState(true);
     const [tvShows, setTvShows] = useState([]);
     const [topRated, setTopRated] = useState([]);
 
-    const fetchTvShows = async () => {
-        try {
-            const requestConfig = {
-                method: "GET",
-                url: "https://api.themoviedb.org/3/discover/tv",
-                params: {
-                    include_adult: "false",
-                    include_video: "false",
-                    language: "en-US",
-                    page: "1",
-                    sort_by: "popularity.desc",
-                },
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-                },
-            };
-            const response = await axios.request(requestConfig);
-
-            if (response) {
-                setTvShows(response.data.results);
-                setIsLoading(false);
-            }
-        } catch (error) {
-            console.log("can not fetch tvShows");
-        }
-    };
-
-    const getTopRated = async () => {
-        const _topRated = await fetchTopRated("tv");
-        setTopRated(_topRated);
-    };
-
     useEffect(() => {
+        const fetchTvShows = async () => {
+            const _tvshows = await fetchMoviesTvShows("tv", searchInput);
+            setTvShows(_tvshows);
+            setIsLoading(false);
+        };
         fetchTvShows();
-    }, []);
+    }, [searchInput]);
 
     useEffect(() => {
+        const getTopRated = async () => {
+            const _topRated = await fetchTopRated("tv");
+            setTopRated(_topRated);
+        };
         getTopRated();
     }, []);
 
