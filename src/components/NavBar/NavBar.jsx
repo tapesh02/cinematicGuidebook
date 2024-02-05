@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../useContext/Context";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -12,9 +13,9 @@ import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
 const NavBar = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const { isLoggedIn } = useContext(GlobalContext);
 
     const pageLinks = ["Home", "Movies", "TvShows"];
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     return (
         <>

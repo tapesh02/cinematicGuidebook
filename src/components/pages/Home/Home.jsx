@@ -33,7 +33,6 @@ const Home = () => {
             const response = await axios.request(requestConfig);
 
             if (response) {
-                console.log(response.data.results);
                 setTrending(response.data.results);
             }
         } catch (error) {
