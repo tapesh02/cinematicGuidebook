@@ -10,7 +10,7 @@ import TvShows from "./components/pages/TvShows/TvShows";
 import SignIn from "./components/pages/SignIn/SignIn";
 import JoinUs from "./components/pages/JoinUs/JoinUs";
 import ThemeTemplate from "./components/ui/ThemeTemplate";
-import ProtectedRoute from "./ProtectedRoute.jsx";
+// import ProtectedRoute from "./ProtectedRoute.jsx";
 
 const RouteLinks = () => {
     return (
@@ -19,8 +19,8 @@ const RouteLinks = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="contact" element={<Contact />} />
-                <Route path="movies" element={<ProtectedRoute Component={Movies} />} />
-                <Route path="tvshows" element={<ProtectedRoute Component={TvShows} />} />
+                <Route path="movies" element={<Movies />} />
+                <Route path="tvshows" element={<TvShows />} />
                 <Route path="signin" element={<SignIn />} />
                 <Route path="joinus" element={<JoinUs />} />
                 <Route path="themetemplate" element={<ThemeTemplate />} />
