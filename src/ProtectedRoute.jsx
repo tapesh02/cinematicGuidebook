@@ -10,11 +10,7 @@ const ProtectedRoute = (props) => {
     useEffect(() => {
         !isLoggedIn && navigate("/signin");
     }, [isLoggedIn, navigate]);
-    return (
-        <>
-            <Component />
-        </>
-    );
+    return <Component />;
 };
 
 export default ProtectedRoute;
