@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -22,6 +23,11 @@ code {
   display: flex;
   gap: 0.5em;
   align-items: center;
+  position: relative;
+}
+.appBar .toolBar .navBar .menu-item {
+  position: absolute;
+  background-color: red;
 }
 
 .iconStyle {
@@ -50,7 +56,7 @@ code {
 }
 
 .cardsBg {
-  background-color: rgba(44, 44, 44, 0.2862745098);
+  background-color: rgba(18, 18, 18, 0.2862745098);
   width: 80%;
   height: auto;
   padding: 1em;
@@ -60,22 +66,45 @@ code {
 .cardsBg .cardMain {
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   align-items: center;
   gap: 1em;
-}
-.cardsBg .card .cardImg {
-  height: 13em;
 }
 
 .mcardBg {
   width: auto;
 }
 .mcardBg .cardMain {
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 .mcardBg .cardMain .cardImg {
   height: auto;
+}
+
+.Error {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 5em);
+  position: relative;
+}
+.Error img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  opacity: 0.7;
+}
+.Error p {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-size: 1.2em;
+  background-color: rgba(0, 0, 0, 0.897);
+  padding: 1em;
+}
+.Error p a {
+  color: rgb(7, 255, 243);
 }
 
 .homeBgOverlay {
@@ -255,4 +284,112 @@ code {
 .signinSections .signinSection4 button {
   width: 100%;
   height: 3em;
+}
+.signinSections .signinSection4 button:disabled {
+  background: rgba(255, 0, 38, 0.425);
+  color: rgba(216, 213, 213, 0.644);
+}
+
+.movieTVHeaderMain {
+  padding: 1.3em;
+}
+.movieTVHeaderMain .movieTVheaderText {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.searchInputMain {
+  display: inline-flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 3em;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  margin-bottom: 2em;
+}
+.searchInputMain .searchInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding-left: 2em;
+  font: inherit;
+  background-color: transparent;
+}
+
+.carousal-container {
+  position: relative;
+  box-shadow: 3px 2px 5px 0px #d32f2f;
+}
+.carousal-container .carousal-inner {
+  width: 100%;
+  overflow: hidden;
+  height: 20em;
+  margin: 1em 0;
+  transition: all ease-in 5s;
+}
+.carousal-container .carousal-inner img,
+.carousal-container .carousal-inner .carousalCards {
+  width: 100%;
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+}
+.carousal-container .leftBtn,
+.carousal-container .rightBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  color: rgba(53, 53, 53, 0.473);
+  transition: all ease-in 0.5s;
+}
+.carousal-container .leftBtn:hover,
+.carousal-container .rightBtn:hover {
+  background-color: rgba(67, 15, 15, 0.667);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.642);
+}
+.carousal-container .rightBtn {
+  right: 0;
+  margin-left: 0em;
+  margin-right: 0.5em;
+}
+.carousal-container .active {
+  animation: fadeIn 2s ease-in;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.carousal-title {
+  position: absolute;
+  top: 0.5em;
+  left: 1em;
+  color: rgb(242, 242, 242);
+  background-color: rgba(28, 28, 28, 0.845);
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.1em 0.3em;
+  font-weight: 500;
+}
+
+.carousal-subtitle {
+  position: absolute;
+  top: 5em;
+  left: 2em;
+  color: rgb(242, 242, 242);
+  background-color: rgba(28, 28, 28, 0.845);
+  width: 50%;
+  padding: 0.5em 0.5em;
+  line-height: 1.4em;
 }/*# sourceMappingURL=App.css.map */

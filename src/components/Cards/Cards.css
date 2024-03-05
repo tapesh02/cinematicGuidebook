@@ -1,0 +1,25 @@
+.cardsBg {
+  background-color: rgba(18, 18, 18, 0.2862745098);
+  width: 80%;
+  height: auto;
+  padding: 1em;
+  margin-top: 3em;
+  border-radius: 10px;
+}
+.cardsBg .cardMain {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: center;
+  gap: 1em;
+}
+
+.mcardBg {
+  width: auto;
+}
+.mcardBg .cardMain {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.mcardBg .cardMain .cardImg {
+  height: auto;
+}/*# sourceMappingURL=Cards.css.map */

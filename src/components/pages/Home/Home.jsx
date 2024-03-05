@@ -19,7 +19,7 @@ const Home = () => {
         try {
             const requestConfig = {
                 method: "GET",
-                url: "https://api.themoviedb.org/3/movie/now_playing",
+                url: `${process.env.REACT_APP_BASEPATH}/movie/now_playing`,
                 params: {
                     language: "en-US",
                     page: "1",
@@ -54,7 +54,7 @@ const Home = () => {
                 </Box>
                 <Box>
                     <Typography variant="subtitle1">
-                        Welcome to <span>cinematickGudiebook</span> where the silver screen comes alive, offering a
+                        Welcome to <span>cinematicGuidebook</span> where the silver screen comes alive, offering a
                         captivating web app
                         <br></br>
                         experience that fuels your love for movies.

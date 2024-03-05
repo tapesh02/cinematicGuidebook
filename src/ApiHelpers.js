@@ -44,7 +44,6 @@ export const fetchMoviesTvShows = async (type, searchInput) => {
         };
 
         const response = await axios.request(requestConfig);
-        console.log(response.data.results);
         return response.data.results;
     } catch (error) {
         return console.log("error fetching movies or tv shows");

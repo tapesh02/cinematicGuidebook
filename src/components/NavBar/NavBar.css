@@ -1,0 +1,74 @@
+.appBar {
+  padding-top: 0.5rem;
+}
+.appBar .toolBar {
+  display: flex;
+  justify-content: space-between;
+}
+.appBar .toolBar .navBar {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.appBar .toolBar .navBar .menu-icon {
+  cursor: pointer;
+  position: relative;
+}
+.appBar .toolBar .navBar .menu-item {
+  margin-top: 0.2em;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: absolute;
+  right: 1.5em;
+  top: 3em;
+  background-color: white;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 3;
+}
+.appBar .toolBar .navBar .menu-item .menu-list {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 0.8em;
+  margin: 0.4em auto;
+  background-color: transparent;
+  padding: 0.4em 0.6em;
+  color: black;
+  font-size: 0.9em;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.appBar .toolBar .navBar .menu-item .menu-list:hover {
+  background-color: rgb(248, 223, 223);
+  color: red;
+  cursor: pointer;
+}
+
+.iconStyle {
+  color: white;
+}
+
+.mobileMenu {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+.mobileMenu .menuIcon {
+  font-size: 2.2em;
+  padding: 0.5em;
+  padding-left: 1em;
+}
+.mobileMenu :nth-of-type(2) {
+  padding-left: 0.5em;
+  padding-right: 1em;
+}
+.mobileMenu a {
+  margin-right: auto;
+}
+.mobileMenu a img {
+  width: 100%;
+}/*# sourceMappingURL=NavBar.css.map */

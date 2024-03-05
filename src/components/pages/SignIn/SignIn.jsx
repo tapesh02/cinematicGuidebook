@@ -11,18 +11,18 @@ const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const _email = localStorage.getItem("email");
-    const _password = localStorage.getItem("password");
+    const _email = sessionStorage.getItem("email");
+    const _password = sessionStorage.getItem("password");
 
     //only for fake validation on frontend
     const storeDetails = () => {
-        localStorage.setItem("email", "test123@test.com");
-        localStorage.setItem("password", "123Test!");
+        sessionStorage.setItem("email", "test123@test.com");
+        sessionStorage.setItem("password", "123Test!");
     };
 
     const handleSignin = () => {
         if (_email === email && _password === password) {
-            navigate("/");
+            navigate("/movies");
             setIsLoggedIn(true);
         }
     };
