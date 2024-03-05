@@ -9,6 +9,7 @@ import Cards from "../../Cards/Cards";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Skeleton, Typography } from "@mui/material";
+import Pagination from "../../Pagination/Pagination";
 
 const Movies = () => {
     const theme = useTheme();
@@ -81,6 +82,7 @@ const Movies = () => {
                             })}
                         </div>
                     </div>
+                    <Pagination />
                 </>
             )}
         </>
