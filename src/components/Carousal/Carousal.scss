@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 .carousal-container {
     position: relative;
+    box-shadow: 3px 2px 5px 0px #d32f2f;
 
     .carousal-inner {
         width: 100%;
@@ -76,6 +77,6 @@
     color: rgb(242, 242, 242);
     background-color: rgba(28, 28, 28, 0.845);
     width: 50%;
-    padding: 0.1em 0.3em;
+    padding: 0.5em 0.5em;
     line-height: 1.4em;
 }

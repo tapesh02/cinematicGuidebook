@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../useContext/Context";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
@@ -6,6 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import MobileNavBar from "./MobileNavBar";
 import logo from "../../assets/logos/TransparentLogo.svg";
+import SubMenu from "./SubMenu";
 
 import { FaUserCircle } from "react-icons/fa";
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
@@ -14,6 +15,8 @@ const NavBar = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const { isLoggedIn } = useContext(GlobalContext);
+
+    const [showMenuItem, setShowMenuItem] = useState(false);
 
     const pageLinks = ["Home", "Movies", "TvShows"];
 
@@ -39,7 +42,14 @@ const NavBar = () => {
                                             </Button>
                                         </NavLink>
                                     ))}
-                                    <FaUserCircle size={30} />
+                                    <FaUserCircle
+                                        size={30}
+                                        onClick={() => setShowMenuItem(!showMenuItem)}
+                                        className="menu-icon"
+                                    />
+                                    {showMenuItem && (
+                                        <SubMenu showMenuItem={showMenuItem} setShowMenuItem={setShowMenuItem} />
+                                    )}
                                 </Box>
                             )}
                             {!isLoggedIn && (

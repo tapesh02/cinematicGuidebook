@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+.carousal-container {
+  position: relative;
+  box-shadow: 3px 2px 5px 0px #d32f2f;
+}
+.carousal-container .carousal-inner {
+  width: 100%;
+  overflow: hidden;
+  height: 20em;
+  margin: 1em 0;
+  transition: all ease-in 5s;
+}
+.carousal-container .carousal-inner img,
+.carousal-container .carousal-inner .carousalCards {
+  width: 100%;
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+}
+.carousal-container .leftBtn,
+.carousal-container .rightBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  color: rgba(53, 53, 53, 0.473);
+  transition: all ease-in 0.5s;
+}
+.carousal-container .leftBtn:hover,
+.carousal-container .rightBtn:hover {
+  background-color: rgba(67, 15, 15, 0.667);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.642);
+}
+.carousal-container .rightBtn {
+  right: 0;
+  margin-left: 0em;
+  margin-right: 0.5em;
+}
+.carousal-container .active {
+  animation: fadeIn 2s ease-in;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.carousal-title {
+  position: absolute;
+  top: 0.5em;
+  left: 1em;
+  color: rgb(242, 242, 242);
+  background-color: rgba(28, 28, 28, 0.845);
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.1em 0.3em;
+  font-weight: 500;
+}
+
+.carousal-subtitle {
+  position: absolute;
+  top: 5em;
+  left: 2em;
+  color: rgb(242, 242, 242);
+  background-color: rgba(28, 28, 28, 0.845);
+  width: 50%;
+  padding: 0.5em 0.5em;
+  line-height: 1.4em;
+}/*# sourceMappingURL=Carousal.css.map */
