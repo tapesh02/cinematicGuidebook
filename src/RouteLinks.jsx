@@ -9,7 +9,7 @@ import Movies from "./components/pages/Movies/Movies";
 import TvShows from "./components/pages/TvShows/TvShows";
 import SignIn from "./components/pages/SignIn/SignIn";
 import JoinUs from "./components/pages/JoinUs/JoinUs";
-import ThemeTemplate from "./components/ui/ThemeTemplate";
+import ThemeTemplate from "./components/theme/ThemeTemplate";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 
 const RouteLinks = () => {

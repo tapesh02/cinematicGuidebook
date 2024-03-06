@@ -23,11 +23,43 @@ code {
   display: flex;
   gap: 0.5em;
   align-items: center;
+}
+.appBar .toolBar .navBar .menu-icon {
+  cursor: pointer;
   position: relative;
 }
 .appBar .toolBar .navBar .menu-item {
+  margin-top: 0.2em;
+  border-radius: 5px;
+  box-sizing: border-box;
   position: absolute;
-  background-color: red;
+  right: 1.5em;
+  top: 3em;
+  background-color: white;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 3;
+}
+.appBar .toolBar .navBar .menu-item .menu-list {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 0.8em;
+  margin: 0.4em auto;
+  background-color: transparent;
+  padding: 0.4em 0.6em;
+  color: black;
+  font-size: 0.9em;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.appBar .toolBar .navBar .menu-item .menu-list:hover {
+  background-color: rgb(248, 223, 223);
+  color: red;
+  cursor: pointer;
 }
 
 .iconStyle {
@@ -320,7 +352,6 @@ code {
 
 .carousal-container {
   position: relative;
-  box-shadow: 3px 2px 5px 0px #d32f2f;
 }
 .carousal-container .carousal-inner {
   width: 100%;
@@ -392,4 +423,88 @@ code {
   width: 50%;
   padding: 0.5em 0.5em;
   line-height: 1.4em;
+}
+
+.vote-progress {
+  position: absolute;
+  top: 1em;
+  right: 2em;
+  border-radius: 50%;
+  border: 3px solid rgb(255, 255, 255);
+  box-shadow: 0px 1px 3px 2px rgba(255, 255, 255, 0.452);
+  padding: 0.1em;
+  background-color: rgba(28, 28, 28, 0.845);
+}
+
+.vote-progress-text {
+  position: absolute;
+  top: 2.6em;
+  right: 3.2em;
+}
+
+.pagination {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1em;
+  padding: 0.5em;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.pagination .page-numbers {
+  display: flex;
+  gap: 0.5em;
+  border: 1px solid rgba(172, 172, 172, 0.295);
+  border-radius: 5px;
+  padding: 0.2em 0.5em;
+  box-sizing: border-box;
+}
+.pagination .page-numbers button {
+  width: 3em;
+  height: 3em;
+  border: none;
+  transition: all 0.3s ease-in;
+  color: white;
+  background-color: black;
+}
+.pagination .page-numbers button:hover {
+  cursor: pointer;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.507);
+}
+.pagination .page-numbers button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  background-color: transparent;
+  color: white;
+}
+.pagination .page-numbers .active {
+  background-color: rgb(161, 1, 1);
+  color: rgba(255, 255, 255, 0.89);
+  border: 1px solid rgba(245, 245, 245, 0.658);
+  border-radius: 3px;
+}
+.pagination .page-numbers .page-next-prev {
+  padding: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: transparent;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 0.2em;
+}
+.pagination .page-numbers .page-next-prev span {
+  padding-top: 0.2em;
+}
+.pagination .page-numbers button:first-of-type {
+  border-right: 1px solid white;
+}
+.pagination .page-numbers button:last-of-type {
+  border-left: 1px solid white;
 }/*# sourceMappingURL=App.css.map */

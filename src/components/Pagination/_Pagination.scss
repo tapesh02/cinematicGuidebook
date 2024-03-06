@@ -1,0 +1,71 @@
+//pagination component
+.pagination {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5em;
+    height: fit-content;
+
+    .page-numbers {
+        display: flex;
+        gap: 0.5em;
+        border: 1px solid rgba(172, 172, 172, 0.295);
+        border-radius: 5px;
+        padding: 0.2em 0.5em;
+        box-sizing: border-box;
+
+        button {
+            width: 3em;
+            height: 3em;
+            border: none;
+            transition: all 0.3s ease-in;
+            color: white;
+            background-color: black;
+
+            &:hover {
+                cursor: pointer;
+                color: black;
+                background-color: rgba(255, 255, 255, 0.507);
+            }
+
+            &:disabled {
+                opacity: 0.2;
+                cursor: not-allowed;
+                background-color: transparent;
+                color: white;
+            }
+        }
+        .active {
+            background-color: rgb(161, 1, 1);
+            color: rgba(255, 255, 255, 0.89);
+            border: 1px solid rgba(245, 245, 245, 0.658);
+            border-radius: 3px;
+        }
+        .page-next-prev {
+            padding: 0.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            background-color: transparent;
+            width: fit-content;
+            gap: 0.2em;
+
+            span {
+                padding-top: 0.2em;
+            }
+        }
+
+        & button:first-of-type {
+            border-right: 1px solid white;
+        }
+        & button:last-of-type {
+            border-left: 1px solid white;
+        }
+    }
+}

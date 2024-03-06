@@ -3,7 +3,6 @@ body {
     font-family: "Montserrat", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // font-family: "Poppins", sans-serif;
     color: white;
     background: black;
 }
@@ -53,4 +52,5 @@ $breakpoints: (
 @import "./components/pages/SignIn/SignIn";
 @import "./components/pages/TvShows/TvShows";
 @import "./components/MoviesTVHeader/MoviesTVHeader";
-@import "./components/Carousal/Carousal.scss";
+@import "./components/Carousal/Carousal";
+@import "./components/Pagination/Pagination";
