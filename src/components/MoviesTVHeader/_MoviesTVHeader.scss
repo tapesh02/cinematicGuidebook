@@ -24,4 +24,15 @@
         font: inherit;
         background-color: transparent;
     }
+
+    .cancel-icon {
+        margin-right: 1em;
+        margin-top: 0.8em;
+        color: red;
+        cursor: pointer;
+
+        &:hover {
+            color: black;
+        }
+    }
 }

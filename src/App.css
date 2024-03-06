@@ -349,6 +349,15 @@ code {
   font: inherit;
   background-color: transparent;
 }
+.searchInputMain .cancel-icon {
+  margin-right: 1em;
+  margin-top: 0.8em;
+  color: red;
+  cursor: pointer;
+}
+.searchInputMain .cancel-icon:hover {
+  color: black;
+}
 
 .carousal-container {
   position: relative;
@@ -470,6 +479,7 @@ code {
   transition: all 0.3s ease-in;
   color: white;
   background-color: black;
+  font-family: "Montserrat", sans-serif;
 }
 .pagination .page-numbers button:hover {
   cursor: pointer;
@@ -507,4 +517,35 @@ code {
 }
 .pagination .page-numbers button:last-of-type {
   border-left: 1px solid white;
+}
+
+.footer-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+}
+.footer-container .footer-icons {
+  display: inline-flex;
+  gap: 1em;
+  padding: 0.3em;
+}
+.footer-container .copyright-title {
+  display: inline-flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+}
+.footer-container .footer-links {
+  box-sizing: border-box;
+  display: flex;
+}
+.footer-container .footer-links li {
+  list-style: none;
+  color: gray;
 }/*# sourceMappingURL=App.css.map */

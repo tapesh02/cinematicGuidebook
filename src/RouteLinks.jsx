@@ -11,6 +11,7 @@ import SignIn from "./components/pages/SignIn/SignIn";
 import JoinUs from "./components/pages/JoinUs/JoinUs";
 import ThemeTemplate from "./components/theme/ThemeTemplate";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 const RouteLinks = () => {
     return (
@@ -26,6 +27,7 @@ const RouteLinks = () => {
                 <Route path="themetemplate" element={<ThemeTemplate />} />
                 <Route path="*" element={<Error />} />
             </Routes>
+            <Footer />
         </>
     );
 };
