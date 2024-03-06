@@ -24,6 +24,7 @@ const Context = ({ children }) => {
                 setTotalItems,
                 currentPage,
                 setCurrentPage,
+                setSearchInput,
             }}>
             {children}
         </GlobalContext.Provider>

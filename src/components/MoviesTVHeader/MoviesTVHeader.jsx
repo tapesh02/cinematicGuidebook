@@ -1,9 +1,11 @@
-import { Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { GlobalContext } from "../../useContext/Context";
 
+import { Typography } from "@mui/material";
+import { MdOutlineCancel } from "react-icons/md";
+
 const MoviesTVHeader = () => {
-    const { handleInputChange, searchInput } = useContext(GlobalContext);
+    const { handleInputChange, searchInput, setSearchInput } = useContext(GlobalContext);
 
     return (
         <>
@@ -21,6 +23,9 @@ const MoviesTVHeader = () => {
                     className="searchInput"
                     onChange={handleInputChange}
                 />
+                {searchInput && (
+                    <MdOutlineCancel size={20} className="cancel-icon" onClick={() => setSearchInput("")} />
+                )}
             </div>
         </>
     );

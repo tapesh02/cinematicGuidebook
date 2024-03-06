@@ -30,7 +30,6 @@ const Movies = () => {
         fetchMovies();
     }, [searchInput, currentPage, setTotalItems]);
 
-    console.log(currentPage);
     useEffect(() => {
         const fetchData = async () => {
             const _topRated = await fetchTopRated("movie");
