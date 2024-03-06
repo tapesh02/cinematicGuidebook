@@ -4,7 +4,7 @@ import RouteLinks from "./RouteLinks";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { ThemeProvider } from "@mui/material/styles";
-import customTheme from "./components/ui/customTheme";
+import customTheme from "./components/theme/customTheme";
 
 const theme = customTheme();
 

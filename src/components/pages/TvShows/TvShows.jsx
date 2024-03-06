@@ -5,6 +5,7 @@ import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 import Carousel from "../../Carousal/Carousal";
 import Cards from "../../Cards/Cards";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
+import Pagination from "../../Pagination/Pagination";
 
 import { useTheme } from "@mui/material/styles";
 import { Skeleton, Typography, useMediaQuery } from "@mui/material";
@@ -12,7 +13,7 @@ import { Skeleton, Typography, useMediaQuery } from "@mui/material";
 const TvShows = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-    const { searchInput } = useContext(GlobalContext);
+    const { searchInput, setTotalItems, currentPage } = useContext(GlobalContext);
 
     const [isLoading, setIsLoading] = useState(true);
     const [tvShows, setTvShows] = useState([]);
@@ -20,12 +21,13 @@ const TvShows = () => {
 
     useEffect(() => {
         const fetchTvShows = async () => {
-            const _tvshows = await fetchMoviesTvShows("tv", searchInput);
-            setTvShows(_tvshows);
+            const _tvshows = await fetchMoviesTvShows("tv", searchInput, currentPage);
+            setTvShows(_tvshows.results);
+            setTotalItems(_tvshows.total_results);
             setIsLoading(false);
         };
         fetchTvShows();
-    }, [searchInput]);
+    }, [searchInput, currentPage, setTotalItems]);
 
     useEffect(() => {
         const getTopRated = async () => {
@@ -69,17 +71,11 @@ const TvShows = () => {
                         <div className="cardMain">
                             {tvShows?.map((tvshow) => {
                                 const { poster_path, id } = tvshow;
-                                return (
-                                    <Cards
-                                        key={id}
-                                        classname="movieCards"
-                                        cardImage={`https://image.tmdb.org/t/p/original${poster_path}`}
-                                        id={id}
-                                    />
-                                );
+                                return <Cards key={id} classname="movieCards" cardImage={poster_path} id={id} />;
                             })}
                         </div>
                     </div>
+                    <Pagination />
                 </>
             )}
         </>

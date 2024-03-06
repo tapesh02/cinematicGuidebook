@@ -20,7 +20,7 @@ export const fetchTopRated = async (type) => {
     }
 };
 
-export const fetchMoviesTvShows = async (type, searchInput) => {
+export const fetchMoviesTvShows = async (type, searchInput, pageNumber) => {
     const url = searchInput
         ? `${process.env.REACT_APP_BASEPATH}/search/multi`
         : `${process.env.REACT_APP_BASEPATH}/discover/${type}`;
@@ -34,7 +34,7 @@ export const fetchMoviesTvShows = async (type, searchInput) => {
                 include_adult: "false",
                 include_video: "false",
                 language: "en-US",
-                page: "1",
+                page: `${pageNumber}`,
                 sort_by: "popularity.desc",
             },
             headers: {
@@ -44,7 +44,7 @@ export const fetchMoviesTvShows = async (type, searchInput) => {
         };
 
         const response = await axios.request(requestConfig);
-        return response.data.results;
+        return response.data;
     } catch (error) {
         return console.log("error fetching movies or tv shows");
     }

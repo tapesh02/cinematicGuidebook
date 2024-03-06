@@ -5,16 +5,16 @@ import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 import Carousel from "../../Carousal/Carousal";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Cards from "../../Cards/Cards";
+import Pagination from "../../Pagination/Pagination";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Skeleton, Typography } from "@mui/material";
-import Pagination from "../../Pagination/Pagination";
 
 const Movies = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-    const { searchInput } = useContext(GlobalContext);
+    const { searchInput, setTotalItems, currentPage } = useContext(GlobalContext);
 
     const [isLoading, setIsLoading] = useState(true);
     const [topRated, setTopRated] = useState([]);
@@ -22,13 +22,15 @@ const Movies = () => {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const _movies = await fetchMoviesTvShows("movie", searchInput);
-            setMovies(_movies);
+            const _movies = await fetchMoviesTvShows("movie", searchInput, currentPage);
+            setMovies(_movies.results);
+            setTotalItems(_movies.total_results);
             setIsLoading(false);
         };
         fetchMovies();
-    }, [searchInput]);
+    }, [searchInput, currentPage, setTotalItems]);
 
+    console.log(currentPage);
     useEffect(() => {
         const fetchData = async () => {
             const _topRated = await fetchTopRated("movie");
@@ -75,7 +77,7 @@ const Movies = () => {
                                     <Cards
                                         key={id}
                                         className="to-do add class or fix this later"
-                                        cardImage={`https://image.tmdb.org/t/p/original${poster_path}`}
+                                        cardImage={poster_path}
                                         id={id}
                                     />
                                 );
