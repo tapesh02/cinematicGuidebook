@@ -367,26 +367,28 @@ code {
   overflow: hidden;
   height: 20em;
   margin: 1em 0;
-  transition: all ease-in 5s;
+}
+.carousal-container .carousal-inner .overlay-gradient {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: linear-gradient(to right, black, transparent);
 }
 .carousal-container .carousal-inner img,
 .carousal-container .carousal-inner .carousalCards {
   width: 100%;
-  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
 }
 .carousal-container .leftBtn,
 .carousal-container .rightBtn {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
   z-index: 2;
   cursor: pointer;
   width: 30px;
   height: 30px;
   padding: 0.8em;
-  margin-left: 0.5em;
-  color: rgba(53, 53, 53, 0.473);
-  transition: all ease-in 0.5s;
+  color: rgba(158, 158, 158, 0.473);
+  transition: all 0.5s ease-in;
 }
 .carousal-container .leftBtn:hover,
 .carousal-container .rightBtn:hover {
@@ -394,29 +396,21 @@ code {
   border-radius: 50%;
   color: rgba(255, 255, 255, 0.642);
 }
+.carousal-container .leftBtn {
+  left: 42%;
+  transform: translateY(-50%);
+}
 .carousal-container .rightBtn {
-  right: 0;
-  margin-left: 0em;
-  margin-right: 0.5em;
-}
-.carousal-container .active {
-  animation: fadeIn 2s ease-in;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  right: 42%;
+  transform: translateY(-50%);
 }
 
 .carousal-title {
   position: absolute;
   top: 0.5em;
-  left: 1em;
+  left: 0.1em;
   color: rgb(242, 242, 242);
-  background-color: rgba(28, 28, 28, 0.845);
+  background-color: rgba(16, 16, 16, 0.256);
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.1em 0.3em;
@@ -426,9 +420,9 @@ code {
 .carousal-subtitle {
   position: absolute;
   top: 5em;
-  left: 2em;
+  left: 0.1em;
   color: rgb(242, 242, 242);
-  background-color: rgba(28, 28, 28, 0.845);
+  background-color: rgba(16, 16, 16, 0.256);
   width: 50%;
   padding: 0.5em 0.5em;
   line-height: 1.4em;
@@ -436,19 +430,17 @@ code {
 
 .vote-progress {
   position: absolute;
-  top: 1em;
-  right: 2em;
+  bottom: 1em;
+  left: 1em;
   border-radius: 50%;
-  border: 3px solid rgb(255, 255, 255);
-  box-shadow: 0px 1px 3px 2px rgba(255, 255, 255, 0.452);
+  box-shadow: 0px 1px 3px 2px rgba(103, 103, 103, 0.384);
   padding: 0.1em;
-  background-color: rgba(28, 28, 28, 0.845);
 }
 
 .vote-progress-text {
   position: absolute;
-  top: 2.6em;
-  right: 3.2em;
+  bottom: 2.6em;
+  left: 2.2em;
 }
 
 .pagination {

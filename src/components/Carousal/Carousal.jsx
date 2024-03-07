@@ -17,13 +17,6 @@ const Carousel = ({ slides }) => {
         setCurLength(curLength + 1 > len - 1 ? 0 : curLength + 1);
     }, [curLength, len]);
 
-    useEffect(() => {
-        const interval = setTimeout(() => {
-            rightHandle();
-        }, 8000);
-        return () => clearTimeout(interval);
-    }, [rightHandle, curLength]);
-
     return (
         <div className="carousal-container">
             <IoIosArrowBack className="leftBtn" onClick={leftHandle} />
@@ -32,34 +25,29 @@ const Carousel = ({ slides }) => {
                 <div>
                     {slides?.map((slide, index) => {
                         const { backdrop_path, id, original_title, original_name, overview, vote_average } = slide;
-                        const isActive = curLength === index;
                         const _overview = `${overview.slice(0, 190)}...`;
                         return (
                             curLength === index && (
                                 <>
+                                    <div className="overlay-gradient"></div>
                                     <img
                                         key={id}
-                                        className={` ${isActive ? "active" : ""}`}
                                         src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
                                         alt="img"
                                     />
-                                    <Typography variant="h4" className={`carousal-title ${isActive ? "active" : ""}`}>
+                                    <Typography variant="h4" className="carousal-title">
                                         {original_name || original_title}
                                     </Typography>
-                                    <Typography
-                                        variant="subtitle-1"
-                                        className={`carousal-subtitle ${isActive ? "active" : ""}`}>
+                                    <Typography variant="subtitle-1" className="carousal-subtitle">
                                         {_overview}
                                     </Typography>
                                     <CircularProgress
-                                        className={`vote-progress ${isActive ? "active" : ""}`}
+                                        className="vote-progress"
                                         variant="determinate"
                                         value={vote_average * 10}
                                         size={"4em"}
                                     />
-                                    <Typography
-                                        variant="subtitle-1"
-                                        className={`vote-progress-text ${isActive ? "active" : ""}`}>
+                                    <Typography variant="subtitle-1" className="vote-progress-text">
                                         {(vote_average * 10).toFixed() + "%"}
                                     </Typography>
                                 </>
