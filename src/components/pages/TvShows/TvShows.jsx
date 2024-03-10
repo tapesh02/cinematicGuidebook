@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
 import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 
-import Carousel from "../../Carousal/Carousal";
 import Cards from "../../Cards/Cards";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Pagination from "../../Pagination/Pagination";
+import { renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
 import { Skeleton, Typography, useMediaQuery } from "@mui/material";
@@ -65,13 +65,20 @@ const TvShows = () => {
                     <div className="mainMovies"></div>
                     <div className={`cardsBg moviesBg ${isMobile ? "mCardBg" : ""}`}>
                         <MoviesTVHeader />
-                        <Typography variant="h6">Top Rated</Typography>
-                        <Carousel slides={topRated} />
-                        <Typography variant="h6">More</Typography>
+                        {renderTopRated(searchInput, topRated)}
+                        <Typography variant="h6">{searchInput ? "Search results" : "More"}</Typography>
                         <div className="cardMain">
                             {tvShows?.map((tvshow) => {
                                 const { poster_path, id } = tvshow;
-                                return <Cards key={id} classname="movieCards" cardImage={poster_path} id={id} />;
+                                return (
+                                    <Cards
+                                        key={id}
+                                        classname="movieCards"
+                                        cardImage={poster_path}
+                                        id={id}
+                                        type="tvshow"
+                                    />
+                                );
                             })}
                         </div>
                     </div>

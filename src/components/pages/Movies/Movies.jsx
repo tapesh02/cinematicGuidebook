@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
 import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 
-import Carousel from "../../Carousal/Carousal";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Cards from "../../Cards/Cards";
 import Pagination from "../../Pagination/Pagination";
+import { renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -66,9 +66,10 @@ const Movies = () => {
                     <div className="mainMovies"></div>
                     <div className={`cardsBg moviesBg ${isMobile ? "mcardBg" : ""}`}>
                         <MoviesTVHeader />
-                        <Typography variant="h6">Top Rated</Typography>
-                        <Carousel slides={topRated} />
-                        <Typography variant="h6">More</Typography>
+                        {renderTopRated(searchInput, topRated)}
+                        <Typography variant={searchInput ? "subtitle1" : "h6"}>
+                            {searchInput ? `Search results for: ${searchInput}` : "More"}
+                        </Typography>
                         <div className="cardMain">
                             {movies?.map((movie) => {
                                 const { poster_path, id } = movie;
@@ -78,6 +79,7 @@ const Movies = () => {
                                         className="to-do add class or fix this later"
                                         cardImage={poster_path}
                                         id={id}
+                                        type="movie"
                                     />
                                 );
                             })}
