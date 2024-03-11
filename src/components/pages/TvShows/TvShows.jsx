@@ -71,13 +71,7 @@ const TvShows = () => {
                             {tvShows?.map((tvshow) => {
                                 const { poster_path, id } = tvshow;
                                 return (
-                                    <Cards
-                                        key={id}
-                                        classname="movieCards"
-                                        cardImage={poster_path}
-                                        id={id}
-                                        type="tvshow"
-                                    />
+                                    <Cards key={id} classname="movieCards" cardImage={poster_path} id={id} type="tv" />
                                 );
                             })}
                         </div>

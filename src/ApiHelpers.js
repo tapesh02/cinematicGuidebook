@@ -49,3 +49,24 @@ export const fetchMoviesTvShows = async (type, searchInput, pageNumber) => {
         return console.log("error fetching movies or tv shows");
     }
 };
+
+export const fetchById = async (searchQuery, searchId) => {
+    const url = `https://api.themoviedb.org/3/${searchQuery}/${searchId}`;
+    try {
+        const requestConfig = {
+            method: "GET",
+            url: url,
+            params: {
+                language: "en-US",
+            },
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+            },
+        };
+        const response = await axios.request(requestConfig);
+        return response.data;
+    } catch (error) {
+        return console.log("error fetching single item");
+    }
+};

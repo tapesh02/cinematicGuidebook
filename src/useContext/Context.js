@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
 export const GlobalContext = createContext();
 
@@ -31,4 +32,7 @@ const Context = ({ children }) => {
     );
 };
 
+Context.propTypes = {
+    children: PropTypes.any,
+};
 export default Context;
