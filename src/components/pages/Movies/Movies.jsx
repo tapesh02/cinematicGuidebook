@@ -5,7 +5,7 @@ import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Cards from "../../Cards/Cards";
 import Pagination from "../../Pagination/Pagination";
-import { renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
+import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -38,6 +38,8 @@ const Movies = () => {
         fetchData();
     }, []);
 
+ 
+
     return (
         <>
             {isLoading ? (
@@ -53,20 +55,7 @@ const Movies = () => {
                         <Typography variant={searchInput ? "subtitle1" : "h6"}>
                             {searchInput ? `Search results for: ${searchInput}` : "More"}
                         </Typography>
-                        <div className="cardMain">
-                            {movies?.map((movie) => {
-                                const { poster_path, id } = movie;
-                                return (
-                                    <Cards
-                                        key={id}
-                                        className="to-do add class or fix this later"
-                                        cardImage={poster_path}
-                                        id={id}
-                                        type="movie"
-                                    />
-                                );
-                            })}
-                        </div>
+                        <RenderItems items={movies} type="movie" />
                     </div>
                     <Pagination />
                 </>

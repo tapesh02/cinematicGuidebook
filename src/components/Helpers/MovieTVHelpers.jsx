@@ -1,5 +1,7 @@
 import { Skeleton, Typography } from "@mui/material";
 import Carousel from "../Carousal/Carousal";
+import Cards from "../Cards/Cards";
+import PropTypes from "prop-types";
 
 export const renderTopRated = (searchInput, topRated) =>
     !searchInput && (
@@ -25,3 +27,12 @@ export const renderSkeleton = (num) => {
     }
     return skeletons;
 };
+
+export const RenderItems = ({ items, type }) => (
+    <div className="cardMain">
+        {items?.map((item) => {
+            const { poster_path, id } = item;
+            return <Cards key={id} cardImage={poster_path} id={id} type={type} />;
+        })}
+    </div>
+);

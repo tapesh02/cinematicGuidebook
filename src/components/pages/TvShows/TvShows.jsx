@@ -5,7 +5,7 @@ import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 import Cards from "../../Cards/Cards";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Pagination from "../../Pagination/Pagination";
-import { renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
+import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
 import { Typography, useMediaQuery } from "@mui/material";
@@ -50,14 +50,7 @@ const TvShows = () => {
                         <MoviesTVHeader />
                         {renderTopRated(searchInput, topRated)}
                         <Typography variant="h6">{searchInput ? "Search results" : "More"}</Typography>
-                        <div className="cardMain">
-                            {tvShows?.map((tvshow) => {
-                                const { poster_path, id } = tvshow;
-                                return (
-                                    <Cards key={id} classname="movieCards" cardImage={poster_path} id={id} type="tv" />
-                                );
-                            })}
-                        </div>
+                        <RenderItems items={tvShows} type="tv" />
                     </div>
                     <Pagination />
                 </>
