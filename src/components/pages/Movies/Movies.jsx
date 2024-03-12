@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
 import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 
-import Carousel from "../../Carousal/Carousal";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
-import Cards from "../../Cards/Cards";
+
 import Pagination from "../../Pagination/Pagination";
+import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Skeleton, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 const Movies = () => {
     const theme = useTheme();
@@ -38,50 +38,22 @@ const Movies = () => {
         fetchData();
     }, []);
 
-    const renderSkeleton = () => {
-        const skeletons = [];
-        for (let i = 0; i < 8; i++) {
-            skeletons[i] = (
-                <Skeleton
-                    key={i}
-                    animation="pulse"
-                    height={200}
-                    variant="rectangular"
-                    width={130}
-                    sx={{ animationDuration: "1.5s", borderRadius: "5px" }}
-                />
-            );
-        }
-        return skeletons;
-    };
-
     return (
         <>
             {isLoading ? (
                 <div className="movieMainSkeleton">
-                    <div className="movieSkeleton">{renderSkeleton()}</div>
+                    <div className="movieSkeleton">{renderSkeleton(8)}</div>
                 </div>
             ) : (
                 <>
                     <div className="mainMovies"></div>
                     <div className={`cardsBg moviesBg ${isMobile ? "mcardBg" : ""}`}>
                         <MoviesTVHeader />
-                        <Typography variant="h6">Top Rated</Typography>
-                        <Carousel slides={topRated} />
-                        <Typography variant="h6">More</Typography>
-                        <div className="cardMain">
-                            {movies?.map((movie) => {
-                                const { poster_path, id } = movie;
-                                return (
-                                    <Cards
-                                        key={id}
-                                        className="to-do add class or fix this later"
-                                        cardImage={poster_path}
-                                        id={id}
-                                    />
-                                );
-                            })}
-                        </div>
+                        {renderTopRated(searchInput, topRated)}
+                        <Typography variant={searchInput ? "subtitle1" : "h6"}>
+                            {searchInput ? `Search results for: ${searchInput}` : "More"}
+                        </Typography>
+                        <RenderItems items={movies} type="movie" />
                     </div>
                     <Pagination />
                 </>

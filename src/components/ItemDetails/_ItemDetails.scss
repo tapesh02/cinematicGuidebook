@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+.item-card {
+    position: relative;
+    .item-card-overlay {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-image: linear-gradient(to right, black, transparent);
+    }
+
+    .item-card-img {
+        width: 100%;
+    }
+
+    .item-details {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        max-width: 50vw;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-left: 2em;
+        gap: 1em;
+
+        .item-title {
+            font-family: "Russo One", sans-serif;
+            font-weight: 400;
+            font-size: 5rem;
+            font-style: normal;
+            margin: 0;
+        }
+
+        .resolution-icons {
+            display: flex;
+            gap: 1em;
+            padding: 0;
+        }
+        .watch-button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+
+            span {
+                margin-top: 0.15em;
+            }
+
+            &:nth-of-type(2) {
+                border: 1px solid;
+                transition: all 0.2s ease-in;
+                &:hover {
+                    background-color: rgba(121, 121, 121, 0.372);
+                }
+            }
+        }
+    }
+}

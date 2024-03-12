@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Checkbox, Stack, TextField } from "@mui/material";
+import { Button, Checkbox, Paper, Stack, TextField } from "@mui/material";
 
 const ThemeTemplate = () => {
     const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -42,18 +42,21 @@ const ThemeTemplate = () => {
                 <TextField id="standard-basic" label="Standard" variant="standard" />
             </Stack>
             <hr></hr>
-            <Stack
-                direction="row"
-                justifyContent="space-evenly"
-                alignItems="flex-start"
-                spacing={2}
-                paddingTop={2}
-                paddingBottom={2}>
-                <Checkbox {...label} defaultChecked />
-                <Checkbox {...label} />
-                <Checkbox {...label} disabled />
-                <Checkbox {...label} disabled checked />
-            </Stack>
+            <Paper>
+                <Stack
+                    direction="row"
+                    justifyContent="space-evenly"
+                    alignItems="flex-start"
+                    spacing={2}
+                    paddingTop={2}
+                    paddingBottom={2}>
+                    <Checkbox {...label} defaultChecked color="primary" />
+                    <Checkbox {...label} defaultChecked color="secondary" />
+                    <Checkbox {...label} color="secondary" />
+                    <Checkbox {...label} disabled />
+                    <Checkbox {...label} disabled checked />
+                </Stack>
+            </Paper>
         </>
     );
 };

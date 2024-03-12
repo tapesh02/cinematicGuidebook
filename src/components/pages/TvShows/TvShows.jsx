@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
 import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 
-import Carousel from "../../Carousal/Carousal";
-import Cards from "../../Cards/Cards";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Pagination from "../../Pagination/Pagination";
+import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
-import { Skeleton, Typography, useMediaQuery } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 
 const TvShows = () => {
     const theme = useTheme();
@@ -37,43 +36,20 @@ const TvShows = () => {
         getTopRated();
     }, []);
 
-    const renderSkeleton = () => {
-        const skeletons = [];
-        for (let i = 0; i < 8; i++) {
-            skeletons[i] = (
-                <Skeleton
-                    key={i}
-                    animation="pulse"
-                    height={200}
-                    variant="rectangular"
-                    width={130}
-                    sx={{ animationDuration: "1.5s", borderRadius: "5px" }}
-                />
-            );
-        }
-        return skeletons;
-    };
-
     return (
         <>
             {isLoading ? (
                 <div className="movieMainSkeleton">
-                    <div className="movieSkeleton">{renderSkeleton()}</div>
+                    <div className="movieSkeleton">{renderSkeleton(8)}</div>
                 </div>
             ) : (
                 <>
                     <div className="mainMovies"></div>
                     <div className={`cardsBg moviesBg ${isMobile ? "mCardBg" : ""}`}>
                         <MoviesTVHeader />
-                        <Typography variant="h6">Top Rated</Typography>
-                        <Carousel slides={topRated} />
-                        <Typography variant="h6">More</Typography>
-                        <div className="cardMain">
-                            {tvShows?.map((tvshow) => {
-                                const { poster_path, id } = tvshow;
-                                return <Cards key={id} classname="movieCards" cardImage={poster_path} id={id} />;
-                            })}
-                        </div>
+                        {renderTopRated(searchInput, topRated)}
+                        <Typography variant="h6">{searchInput ? "Search results" : "More"}</Typography>
+                        <RenderItems items={tvShows} type="tv" />
                     </div>
                     <Pagination />
                 </>

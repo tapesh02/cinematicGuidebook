@@ -6,6 +6,7 @@ import Home from "./components/pages/Home/Home";
 import Error from "./components/pages/Error/Error";
 import Contact from "./components/pages/Contact/Contact";
 import Movies from "./components/pages/Movies/Movies";
+import ItemDetails from "./components/ItemDetails/ItemDetails.jsx";
 import TvShows from "./components/pages/TvShows/TvShows";
 import SignIn from "./components/pages/SignIn/SignIn";
 import JoinUs from "./components/pages/JoinUs/JoinUs";
@@ -22,6 +23,9 @@ const RouteLinks = () => {
                 <Route path="contact" element={<Contact />} />
                 <Route path="movies" element={<ProtectedRoute Component={Movies} />} />
                 <Route path="tvshows" element={<ProtectedRoute Component={TvShows} />} />
+                <Route path="/movies/movie/:id" element={<ProtectedRoute Component={ItemDetails} />} />
+                <Route path="/tvshows/tv/:id" element={<ProtectedRoute Component={ItemDetails} />} />
+
                 <Route path="signin" element={<SignIn />} />
                 <Route path="joinus" element={<JoinUs />} />
                 <Route path="themetemplate" element={<ThemeTemplate />} />

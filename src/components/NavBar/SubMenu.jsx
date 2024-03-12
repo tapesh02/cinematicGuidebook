@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+
 import { useNavigate } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 import { MdOutlinePlaylistPlay, MdOutlineManageAccounts } from "react-icons/md";
 
 const SubMenu = (props) => {
     const { setShowMenuItem, showMenuItem } = props;
+    const buttonRef = useRef(null);
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -41,12 +44,25 @@ const SubMenu = (props) => {
         },
     ];
 
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (showMenuItem && !buttonRef.current?.contains(e.target)) {
+                setShowMenuItem(!showMenuItem);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [buttonRef, showMenuItem, setShowMenuItem]);
+
     const RenderMenuItems = () => (
         <div className="menu-item">
             {subMenu?.map((menu) => {
                 const { menuItem, icon, click } = menu;
                 return (
-                    <button className="menu-list" onClick={click} key={menuItem}>
+                    <button ref={buttonRef} className="menu-list" onClick={click} key={menuItem}>
                         {icon} {menuItem}
                     </button>
                 );
@@ -55,6 +71,11 @@ const SubMenu = (props) => {
     );
 
     return <RenderMenuItems />;
+};
+
+SubMenu.propTypes = {
+    setShowMenuItem: PropTypes.func,
+    showMenuItem: PropTypes.bool,
 };
 
 export default SubMenu;

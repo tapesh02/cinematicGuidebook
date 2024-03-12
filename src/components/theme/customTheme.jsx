@@ -39,6 +39,27 @@ export const customTheme = () => {
                     },
                 },
             },
+            MuiCheckboxRoot: {
+                styleOverrides: {
+                    root: {
+                        "&:disabled": {
+                            borderColor: "white",
+                            border: "1px solid white",
+                        },
+                        "&:checked": {
+                            borderColor: "white",
+                        },
+                    },
+                },
+            },
+
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "black",
+                    },
+                },
+            },
             MuiTextField: {
                 styleOverrides: {
                     root: {
