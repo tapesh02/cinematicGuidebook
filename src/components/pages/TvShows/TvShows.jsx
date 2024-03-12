@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
 import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 
-import Cards from "../../Cards/Cards";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Pagination from "../../Pagination/Pagination";
 import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";

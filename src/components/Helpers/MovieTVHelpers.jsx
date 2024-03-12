@@ -36,3 +36,8 @@ export const RenderItems = ({ items, type }) => (
         })}
     </div>
 );
+
+RenderItems.propTypes = {
+    items: PropTypes.array.isRequired,
+    type: PropTypes.string.isRequired,
+};

@@ -3,7 +3,7 @@ import { GlobalContext } from "../../../useContext/Context";
 import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
-import Cards from "../../Cards/Cards";
+
 import Pagination from "../../Pagination/Pagination";
 import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
 
@@ -37,8 +37,6 @@ const Movies = () => {
         };
         fetchData();
     }, []);
-
- 
 
     return (
         <>
