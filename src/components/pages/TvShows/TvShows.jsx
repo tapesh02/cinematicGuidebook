@@ -5,10 +5,10 @@ import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
 import Cards from "../../Cards/Cards";
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Pagination from "../../Pagination/Pagination";
-import { renderTopRated } from "../../Helpers/MovieTVHelpers";
+import { renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
-import { Skeleton, Typography, useMediaQuery } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 
 const TvShows = () => {
     const theme = useTheme();
@@ -37,28 +37,11 @@ const TvShows = () => {
         getTopRated();
     }, []);
 
-    const renderSkeleton = () => {
-        const skeletons = [];
-        for (let i = 0; i < 8; i++) {
-            skeletons[i] = (
-                <Skeleton
-                    key={i}
-                    animation="pulse"
-                    height={200}
-                    variant="rectangular"
-                    width={130}
-                    sx={{ animationDuration: "1.5s", borderRadius: "5px" }}
-                />
-            );
-        }
-        return skeletons;
-    };
-
     return (
         <>
             {isLoading ? (
                 <div className="movieMainSkeleton">
-                    <div className="movieSkeleton">{renderSkeleton()}</div>
+                    <div className="movieSkeleton">{renderSkeleton(8)}</div>
                 </div>
             ) : (
                 <>
