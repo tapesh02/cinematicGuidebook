@@ -15,9 +15,9 @@ export const signup = async (req, res) => {
     const userExist = await User.findOne({ email });
 
     if (userExist) {
-      return res.status(422).json({ error: "Email already exists" });
+      res.status(422).json({ error: "Email already exists" });
     } else if (createPassword !== retypePassword) {
-      return res.status(422).json({ error: "Passwords do not match" });
+      res.status(422).json({ error: "Passwords do not match" });
     } else {
       const user = new User({
         username,
@@ -32,12 +32,31 @@ export const signup = async (req, res) => {
       const userRegistered = await user.save();
 
       if (userRegistered) {
-        return res.status(201).json({ message: "Signup successful" });
+        res.status(201).json({ message: "Signup successful" });
       }
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const findUser = async (isValidUser) => {
+  if (isValidUser) {
+    // Create and send a JWT token
+    const token = jwt.sign({ _id: user._id }, SECRETKEY);
+    user.tokens = user.tokens.concat({ token });
+    await user.save();
+
+    // Set the token as a cookie
+    res.cookie("signinToken", token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    });
+
+    res.status(200).json({ message: "Sign-in successful" });
+  } else {
+    res.status(400).json({ error: "Invalid credentials" });
   }
 };
 
@@ -52,30 +71,13 @@ export const signin = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (user) {
-      const isMatch = await bcrypt.compare(createPassword, user.createPassword);
-
-      if (isMatch) {
-        // Create and send a JWT token
-        const token = jwt.sign({ _id: user._id }, SECRETKEY);
-        user.tokens = user.tokens.concat({ token });
-        await user.save();
-
-        console.log("signinToken", token);
-        // Set the token as a cookie
-        res.cookie("signinToken", token, {
-          httpOnly: true,
-          expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-        });
-
-        return res.status(200).json({ message: "Sign-in successful" });
-      } else {
-        return res.status(400).json({ error: "Invalid credentials" });
-      }
+      const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
+      findUser(isValidUser);
     } else {
-      return res.status(400).json({ error: "Invalid credentials" });
+      res.status(400).json({ error: "Invalid credentials" });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 };

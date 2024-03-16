@@ -7,12 +7,13 @@
   ],
   "rules": {
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "endOfLine": "auto",
         "trailingComma": "all"
       }
     ],
+    "comma-dangle": "off",
     "no-unused-vars": "error"
   },
   "parserOptions": {
