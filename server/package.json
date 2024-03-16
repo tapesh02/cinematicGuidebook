@@ -21,11 +21,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "server": "nodemon index.js"
+    "lint": "eslint . --ext .js && echo -e \"\n\n\u001b[32mNo errors or warnings found\u001b[0m\"",
+    "server": "npm run lint && nodemon index.js"
   },
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "eslint-config-prettier": "^9.1.0"
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3"
   }
 }
