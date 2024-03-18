@@ -9,9 +9,15 @@ import { signup, signin } from "./authRoute.js";
 getConnection();
 
 const app = express();
+let URL;
 
 app.use(express.json());
 app.use(cookieParser());
+
+app.use((req, res, next) => {
+  URL = req.protocol + "://" + req.get("host") + req.originalUrl;
+  next();
+});
 
 app.use(
   cors({
@@ -19,11 +25,11 @@ app.use(
     methods: "GET,PATCH,POST,DELETE",
     credentials: true,
     headers: "Content-Type",
-  }),
+  })
 );
 
 app.get("/", (req, res) => {
-  res.send(`hello am backend server, ${process.env.BACKEND_URL} `);
+  res.send(`hello am backend server, ${URL} `);
 });
 
 app.post("/signup", signup);
