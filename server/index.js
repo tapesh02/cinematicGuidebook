@@ -19,14 +19,23 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-    origin: `${process.env.BACKEND_URL}`,
-    methods: "GET,PATCH,POST,DELETE",
-    credentials: true,
-    headers: "Content-Type",
-  })
-);
+const allowedOrigins = ["http://localhost:3000", `${process.env.BACKEND_URL}`];
+
+const getOrigins = (origin, callback) => {
+  if (!origin || allowedOrigins.includes(origin)) {
+    callback(null, true);
+  } else {
+    callback(new Error("Not allowed by CORS"));
+  }
+};
+
+const corsOptions = {
+  origin: getOrigins,
+  methods: "GET,PATCH,POST,DELETE",
+  credentials: true,
+  headers: "Content-Type",
+};
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send(`hello am backend server, ${URL} `);
