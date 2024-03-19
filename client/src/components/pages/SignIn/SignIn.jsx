@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
-import { GlobalContext } from "../../../useContext/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import { urlPath } from "../../../ApiHelpers";
+import { GlobalContext } from "../../../useContext/Context";
+
 import { Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
 
 const SignIn = () => {
@@ -14,8 +17,8 @@ const SignIn = () => {
 
   const handleSignin = async (event) => {
     event?.preventDefault();
-    const URL =
-      window.location.hostname === "localhost" ? "http://localhost:5000" : `${process.env.REACT_APP_API_URL}/signin`;
+    const URL = `${urlPath}/signin`;
+
     if (email && password) {
       try {
         const response = await axios.post(
@@ -32,8 +35,8 @@ const SignIn = () => {
           }
         );
         console.log(response);
-        // navigate("/movies");
-        // setIsLoggedIn(true);
+        navigate("/movies");
+        setIsLoggedIn(true);
       } catch (error) {
         console.log(error);
       }
