@@ -6,41 +6,22 @@ import cookieParser from "cookie-parser";
 import { getConnection } from "./databaseConnection.js";
 import { signup, signin, signout } from "./authRoute.js";
 
-getConnection();
-
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ["http://localhost:3000", `${process.env.BACKEND_URL}`];
-
-const getOrigins = (origin, callback) => {
-  if (!origin || allowedOrigins.includes(origin)) {
-    callback(null, true);
-  } else {
-    callback(new Error("Not allowed by CORS"));
-  }
-};
-
 const corsOptions = {
-  origin: getOrigins,
-  methods: "GET,PATCH,POST,DELETE, OPTIONS",
+  origin: [`${process.env.BACKEND_URL}`],
+  methods: ["POST", "PATCH", "DELETE", "OPTIONS", "GET"],
   credentials: true,
   headers: "Content-Type",
 };
 app.use(cors(corsOptions));
+getConnection();
 
 app.get("/", (req, res) => {
-  res.send(`hello am backend server, ${req.protocol + "://" + req.get("host") + req.originalUrl} `);
-});
-
-app.use((req, res, next) => {
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-  next();
+  res.send("hello am backend server");
 });
 
 app.post("/signup", signup);
