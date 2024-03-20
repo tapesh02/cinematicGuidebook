@@ -10,8 +10,8 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: ["http://localhost:3000"],
-  methods: ["POST. GET, DELETE, PATCH"],
+  origin: [`${process.env.BACKEND_URL}`],
+  methods: ["POST", "PATCH", "DELETE", "OPTIONS", "GET"],
   credentials: true,
   headers: "Content-Type",
 };
