@@ -35,6 +35,10 @@ app.get("/", (req, res) => {
   res.send(`hello am backend server, ${req.protocol + "://" + req.get("host") + req.originalUrl} `);
 });
 
+app.options("/*", (_, res) => {
+  res.sendStatus(200);
+});
+
 app.post("/signup", signup);
 app.post("/signin", signin);
 app.get("/signout", signout);
