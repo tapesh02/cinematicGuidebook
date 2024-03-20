@@ -19,21 +19,19 @@ const SignIn = () => {
     event?.preventDefault();
     const URL = `${urlPath}/signin`;
 
+    const reqBody = {
+      email: email,
+      createPassword: password,
+    };
+
     if (email && password) {
       try {
-        const response = await axios.post(
-          URL,
-          {
-            email: email,
-            createPassword: password,
+        const response = await axios.post(URL, reqBody, {
+          headers: {
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          }
-        );
+          withCredentials: true,
+        });
         console.log(response);
         navigate("/movies");
         sessionStorage.setItem("isAuthenticated", true);
