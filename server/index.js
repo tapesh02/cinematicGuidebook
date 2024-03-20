@@ -9,15 +9,9 @@ import { signup, signin, signout } from "./authRoute.js";
 getConnection();
 
 const app = express();
-let URL;
 
 app.use(express.json());
 app.use(cookieParser());
-
-app.use((req, res, next) => {
-  URL = req.protocol + "://" + req.get("host") + req.originalUrl;
-  next();
-});
 
 const allowedOrigins = ["http://localhost:3000", `${process.env.BACKEND_URL}`];
 
@@ -31,14 +25,14 @@ const getOrigins = (origin, callback) => {
 
 const corsOptions = {
   origin: getOrigins,
-  methods: "GET,PATCH,POST,DELETE",
+  methods: "GET,PATCH,POST,DELETE, OPTIONS",
   credentials: true,
   headers: "Content-Type",
 };
 app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
-  res.send(`hello am backend server, ${URL} `);
+  res.send(`hello am backend server, ${req.protocol + "://" + req.get("host") + req.originalUrl} `);
 });
 
 app.post("/signup", signup);
