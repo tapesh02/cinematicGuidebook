@@ -3,14 +3,23 @@ import { GlobalContext } from "./useContext/Context";
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = (props) => {
-    const { Component } = props;
-    const navigate = useNavigate();
-    const { isLoggedIn } = useContext(GlobalContext);
+  const { Component } = props;
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(GlobalContext);
 
-    useEffect(() => {
-        !isLoggedIn && navigate("/signin");
-    }, [isLoggedIn, navigate]);
-    return <Component />;
+  const handleLocalStorage = () => {
+    const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
+    setIsLoggedIn(isAuthenticated);
+    !isAuthenticated && navigate("/signin");
+  };
+
+  useEffect(() => {
+    handleLocalStorage();
+    window.addEventListener("storage", handleLocalStorage);
+    return () => window.removeEventListener("storage", handleLocalStorage);
+  }, []);
+
+  return <Component />;
 };
 
 export default ProtectedRoute;

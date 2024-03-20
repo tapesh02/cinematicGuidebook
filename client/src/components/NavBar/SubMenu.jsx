@@ -1,81 +1,102 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import PropTypes from "prop-types";
 
 import { useNavigate } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 import { MdOutlinePlaylistPlay, MdOutlineManageAccounts } from "react-icons/md";
+import axios from "axios";
+import { urlPath } from "../../ApiHelpers";
+import { GlobalContext } from "../../useContext/Context";
 
 const SubMenu = (props) => {
-    const { setShowMenuItem, showMenuItem } = props;
-    const buttonRef = useRef(null);
-    const navigate = useNavigate();
+  const { setShowMenuItem, showMenuItem } = props;
+  const buttonRef = useRef(null);
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(GlobalContext);
 
-    const handleLogout = () => {
-        sessionStorage.clear();
+  const handleSignOut = async () => {
+    try {
+      const url = `${urlPath}/signout`;
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      console.log(response.data.message);
+      if (response?.status === 200) {
         navigate("/signin");
-        setShowMenuItem(!showMenuItem);
-    };
+        setIsLoggedIn(false);
+        sessionStorage.clear();
+      }
+      setShowMenuItem(!showMenuItem);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const handleProfile = () => {
-        navigate("/profile");
-        setShowMenuItem(!showMenuItem);
-    };
+  const handleProfile = () => {
+    navigate("/profile");
+    setShowMenuItem(!showMenuItem);
+  };
 
-    const handleWatchList = () => {
-        navigate("/watchlist");
-        setShowMenuItem(!showMenuItem);
-    };
+  const handleWatchList = () => {
+    navigate("/watchlist");
+    setShowMenuItem(!showMenuItem);
+  };
 
-    const subMenu = [
-        {
-            menuItem: "Logout",
-            icon: <IoIosLogOut size={20} />,
-            click: handleLogout,
-        },
-        {
-            menuItem: "Profile",
-            icon: <MdOutlineManageAccounts size={20} />,
-            click: handleProfile,
-        },
-        {
-            menuItem: "Watchlist",
-            icon: <MdOutlinePlaylistPlay size={20} />,
-            click: handleWatchList,
-        },
-    ];
+  const subMenu = [
+    {
+      menuItem: "Sign out",
+      icon: <IoIosLogOut size={20} />,
+      click: handleSignOut,
+    },
+    {
+      menuItem: "Profile",
+      icon: <MdOutlineManageAccounts size={20} />,
+      click: handleProfile,
+    },
+    {
+      menuItem: "Watchlist",
+      icon: <MdOutlinePlaylistPlay size={20} />,
+      click: handleWatchList,
+    },
+  ];
 
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (showMenuItem && !buttonRef.current?.contains(e.target)) {
-                setShowMenuItem(!showMenuItem);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
+  //TODO NOTES: fixed this code as this is not working as expected
 
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [buttonRef, showMenuItem, setShowMenuItem]);
+  // useEffect(() => {
+  //     const handleClickOutside = (e) => {
+  //         if (showMenuItem && !buttonRef.current?.contains(e.target)) {
+  //             setShowMenuItem(!showMenuItem);
+  //         }
+  //     };
+  //     document.addEventListener("mousedown", handleClickOutside);
 
-    const RenderMenuItems = () => (
-        <div className="menu-item">
-            {subMenu?.map((menu) => {
-                const { menuItem, icon, click } = menu;
-                return (
-                    <button ref={buttonRef} className="menu-list" onClick={click} key={menuItem}>
-                        {icon} {menuItem}
-                    </button>
-                );
-            })}
-        </div>
-    );
+  //     return () => {
+  //         document.removeEventListener("mousedown", handleClickOutside);
+  //     };
+  // }, [buttonRef, showMenuItem, setShowMenuItem]);
 
-    return <RenderMenuItems />;
+  const RenderMenuItems = () => (
+    <div className="menu-item">
+      {subMenu?.map((menu) => {
+        const { menuItem, icon, click } = menu;
+        return (
+          <button ref={buttonRef} className="menu-list" onClick={click} key={menuItem}>
+            {icon} {menuItem}
+          </button>
+        );
+      })}
+    </div>
+  );
+
+  return <RenderMenuItems />;
 };
 
 SubMenu.propTypes = {
-    setShowMenuItem: PropTypes.func,
-    showMenuItem: PropTypes.bool,
+  setShowMenuItem: PropTypes.func,
+  showMenuItem: PropTypes.bool,
 };
 
 export default SubMenu;

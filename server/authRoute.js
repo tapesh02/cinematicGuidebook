@@ -41,25 +41,6 @@ export const signup = async (req, res) => {
   }
 };
 
-const findUser = async (isValidUser) => {
-  if (isValidUser) {
-    // Create and send a JWT token
-    const token = jwt.sign({ _id: user._id }, SECRETKEY);
-    user.tokens = user.tokens.concat({ token });
-    await user.save();
-
-    // Set the token as a cookie
-    res.cookie("signinToken", token, {
-      httpOnly: true,
-      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-    });
-
-    res.status(200).json({ message: "Sign-in successful" });
-  } else {
-    res.status(400).json({ error: "Invalid credentials" });
-  }
-};
-
 export const signin = async (req, res) => {
   try {
     const { email, createPassword } = req.body;
@@ -72,7 +53,24 @@ export const signin = async (req, res) => {
 
     if (user) {
       const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
-      findUser(isValidUser);
+      if (isValidUser) {
+        // Create and send a JWT token
+        const token = jwt.sign({ _id: user._id }, SECRETKEY);
+        user.tokens = user.tokens.concat({ token });
+        await user.save();
+
+        // Set the token as a cookie
+        res.cookie("signinToken", token, {
+          httpOnly: true,
+          sameSite: "strict",
+          secure: "true",
+          maxAge: (2 * 60 * 60 + 3 * 60 + 10) * 1000,
+        });
+
+        res.status(200).json({ message: "Sign-in successful" });
+      } else {
+        res.status(400).json({ error: "Invalid credentials" });
+      }
     } else {
       res.status(400).json({ error: "Invalid credentials" });
     }
@@ -80,4 +78,9 @@ export const signin = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
+};
+
+export const signout = (req, res) => {
+  res.cookie("signinToken", "", { maxAge: 1 });
+  res.status(200).json({ message: "signout successfully" });
 };
