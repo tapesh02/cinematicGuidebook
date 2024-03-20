@@ -4,7 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import { getConnection } from "./databaseConnection.js";
-import { signup, signin } from "./authRoute.js";
+import { signup, signin, signout } from "./authRoute.js";
 
 getConnection();
 
@@ -43,6 +43,7 @@ app.get("/", (req, res) => {
 
 app.post("/signup", signup);
 app.post("/signin", signin);
+app.get("/signout", signout);
 
 const PORT = process.env.PORT || 5000;
 

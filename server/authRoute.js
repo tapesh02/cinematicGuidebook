@@ -62,7 +62,9 @@ export const signin = async (req, res) => {
         // Set the token as a cookie
         res.cookie("signinToken", token, {
           httpOnly: true,
-          expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          sameSite: "strict",
+          secure: "true",
+          maxAge: (2 * 60 * 60 + 3 * 60 + 10) * 1000,
         });
 
         res.status(200).json({ message: "Sign-in successful" });
@@ -76,4 +78,9 @@ export const signin = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
+};
+
+export const signout = (req, res) => {
+  res.cookie("signinToken", "", { maxAge: 1 });
+  res.status(200).json({ message: "signout successfully" });
 };

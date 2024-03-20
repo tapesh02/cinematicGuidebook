@@ -36,6 +36,7 @@ const SignIn = () => {
         );
         console.log(response);
         navigate("/movies");
+        sessionStorage.setItem("isAuthenticated", true);
         setIsLoggedIn(true);
       } catch (error) {
         console.log(error);
@@ -103,7 +104,7 @@ const SignIn = () => {
           </div>
           <div className="signinSection4">
             <Button
-              disabled={email.length < 0 || !email.includes("@") || password.length < 0}
+              disabled={email?.length < 0 || !email.includes("@") || password?.length < 0}
               variant="contained"
               color="primary"
               type="submit">
