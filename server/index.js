@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import cookieParser from "cookie-parser";
 
 import { getConnection } from "./database/databaseConnection.js";
 import { signup, signin, signout } from "./routes/authRoute.js";
@@ -9,11 +8,10 @@ import { signup, signin, signout } from "./routes/authRoute.js";
 const app = express();
 
 app.use(express.json());
-app.use(cookieParser());
 
 const corsOptions = {
-  origin: [`${process.env.BACKEND_URL}`],
-  methods: ["POST", "PATCH", "DELETE", "OPTIONS", "GET"],
+  origin: ["http://localhost:3000"],
+  methods: ["POST. GET, DELETE, PATCH"],
   credentials: true,
   headers: "Content-Type",
 };
