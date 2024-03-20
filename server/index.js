@@ -3,8 +3,8 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import { getConnection } from "./databaseConnection.js";
-import { signup, signin, signout } from "./authRoute.js";
+import { getConnection } from "./database/databaseConnection.js";
+import { signup, signin, signout } from "./routes/authRoute.js";
 
 const app = express();
 
