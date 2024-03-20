@@ -13,7 +13,7 @@
       "headers": {
         "Access-Control-Allow-Origin": "https://cinematic-guidebook.vercel.app",
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+        "Access-Control-Allow-Headers": "Origin X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
       }
     }
   ]
