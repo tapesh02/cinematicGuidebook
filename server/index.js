@@ -35,8 +35,12 @@ app.get("/", (req, res) => {
   res.send(`hello am backend server, ${req.protocol + "://" + req.get("host") + req.originalUrl} `);
 });
 
-app.options("/*", (_, res) => {
-  res.sendStatus(200);
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+  next();
 });
 
 app.post("/signup", signup);
