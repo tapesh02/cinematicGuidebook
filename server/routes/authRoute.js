@@ -52,14 +52,15 @@ export const signin = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (user) {
-      const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
+      const isValidUser = await bcrypt.compare(
+        createPassword,
+        user.createPassword,
+      );
       if (isValidUser) {
-        // Create and send a JWT token
         const token = jwt.sign({ _id: user._id }, SECRETKEY);
         user.tokens = user.tokens.concat({ token });
         await user.save();
 
-        // Set the token as a cookie
         res.cookie("signinToken", token, {
           httpOnly: true,
           sameSite: "strict",

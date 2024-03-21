@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: [`${process.env.BACKEND_URL}`],
+  origin: [`${process.env.FRONTEND_URL}`],
   methods: ["POST", "PATCH", "DELETE", "OPTIONS", "GET"],
   credentials: true,
   headers: "Content-Type",
