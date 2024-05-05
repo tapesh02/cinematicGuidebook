@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
-import { fetchMoviesTvShows, fetchTopRated } from "../../../ApiHelpers";
+import { fetchMoviesTvShows } from "../../../ApiHelpers";
 
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 
@@ -10,14 +10,15 @@ import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/Movie
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Typography } from "@mui/material";
+import useTopRated from "../../../useHooks/useTopRated";
 
 const Movies = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { searchInput, setTotalItems, currentPage } = useContext(GlobalContext);
+  const { topRated, loading } = useTopRated("movie");
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [topRated, setTopRated] = useState([]);
+  const [isLoading, setIsLoading] = useState(loading);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -29,14 +30,6 @@ const Movies = () => {
     };
     fetchMovies();
   }, [searchInput, currentPage, setTotalItems]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const _topRated = await fetchTopRated("movie");
-      setTopRated(_topRated);
-    };
-    fetchData();
-  }, []);
 
   return (
     <>
@@ -55,7 +48,7 @@ const Movies = () => {
             </Typography>
             <RenderItems items={movies} type="movie" />
           </div>
-          <Pagination />
+          <Pagination isMobile={isMobile} />
         </>
       )}
     </>

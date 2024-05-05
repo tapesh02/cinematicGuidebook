@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../../useContext/Context";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Pagination = () => {
+const Pagination = (props) => {
+  const { isMobile } = props;
   const { totalItems, currentPage, setCurrentPage } = useContext(GlobalContext);
 
   const pageLimit = 5;
@@ -30,18 +31,19 @@ const Pagination = () => {
           <span>
             <FaChevronLeft />
           </span>{" "}
-          Prev
+          {!isMobile && "Prev"}
         </button>
         {pageNumbers.slice(minPageNum, maxPageNum).map((number) => (
           <button key={number} onClick={() => paginate(number)} className={currentPage === number ? "active" : null}>
             {number}
           </button>
         ))}
+
         <button
           className="page-next-prev"
           disabled={currentPage === totalPages}
           onClick={() => paginate(Math.min(maxPage, totalPages) - 1)}>
-          Next{" "}
+          {!isMobile && "Next"}
           <span>
             <FaChevronRight />
           </span>
