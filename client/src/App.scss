@@ -1,45 +1,45 @@
 body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: white;
-    background: black;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background: black;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 $breakpoints: (
-    "small-mobile": 320px,
-    "mobile": 450px,
-    "tablet": 770px,
-    "laptop": 1200px,
+  "small-mobile": 320px,
+  "mobile": 450px,
+  "tablet": 770px,
+  "laptop": 1200px,
 );
 
 @mixin small-mobile {
-    @media only screen and (max-width: map-get($breakpoints, "small-mobile")) {
-        @content;
-    }
+  @media only screen and (max-width: map-get($breakpoints, "small-mobile")) {
+    @content;
+  }
 }
 
 @mixin mobile {
-    @media only screen and (max-width: map-get($breakpoints, "mobile")) {
-        @content;
-    }
+  @media only screen and (max-width: map-get($breakpoints, "mobile")) {
+    @content;
+  }
 }
 
 @mixin tablet {
-    @media only screen and (max-width: map-get($breakpoints, "tablet")) {
-        @content;
-    }
+  @media only screen and (max-width: map-get($breakpoints, "tablet")) {
+    @content;
+  }
 }
 
 @mixin laptop {
-    @media only screen and (max-width: map-get($breakpoints, "laptop")) {
-        @content;
-    }
+  @media only screen and (max-width: map-get($breakpoints, "laptop")) {
+    @content;
+  }
 }
 
 @import "./components/NavBar/NavBar";
@@ -56,3 +56,4 @@ $breakpoints: (
 @import "./components/Pagination/Pagination";
 @import "./components/Footer/Footer";
 @import "./components/ItemDetails/ItemDetails";
+@import "./components/ExtraLikesDetails/ExtraLikesDetails";

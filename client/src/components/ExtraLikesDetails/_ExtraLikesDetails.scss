@@ -1,0 +1,13 @@
+.details-section {
+  display: flex;
+  box-sizing: border-box;
+
+  flex-direction: column;
+  gap: 0.5em;
+
+  .details-header {
+    font-weight: 600;
+    color: #747474;
+    padding-right: 0.5em;
+  }
+}
