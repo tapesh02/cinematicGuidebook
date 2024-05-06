@@ -1,7 +1,6 @@
 .details-section {
   display: flex;
   box-sizing: border-box;
-
   flex-direction: column;
   gap: 0.5em;
 
@@ -9,5 +8,36 @@
     font-weight: 600;
     color: #747474;
     padding-right: 0.5em;
+  }
+}
+
+.similar-items-card {
+  box-sizing: border-box;
+  display: flex;
+
+  .carousal-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .carousal-inner {
+    display: flex;
+    div {
+      display: flex;
+      width: 20%;
+      gap: 0.5em;
+      padding: 0.2em;
+    }
+
+    img {
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 1px 1px 5px 1px rgb(84, 84, 84);
+    }
+  }
+  .leftBtn,
+  .rightBtn {
+    background-color: rgba(67, 15, 15, 0.667);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.642);
   }
 }
