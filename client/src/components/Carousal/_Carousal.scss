@@ -1,114 +1,126 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 .carousal-container {
-    position: relative;
+  position: relative;
 
-    .carousal-inner {
-        width: 100%;
-        overflow: hidden;
-        height: 20em;
-        margin: 1em 0;
+  .carousal-inner {
+    width: 100%;
+    overflow: hidden;
+    height: 20em;
+    margin: 1em 0;
 
-        .overlay-gradient {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            background-image: linear-gradient(to right, black, transparent);
-        }
-        img,
-        .carousalCards {
-            width: 100%;
-        }
+    .overlay-gradient {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-image: linear-gradient(to right, black, transparent);
     }
 
-    .leftBtn,
-    .rightBtn {
-        position: absolute;
-        bottom: 0;
-        z-index: 2;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        padding: 0.8em;
-        color: rgba(158, 158, 158, 0.473);
-        transition: all 0.5s ease-in;
-
-        &:hover {
-            background-color: rgba(67, 15, 15, 0.667);
-            border-radius: 50%;
-            color: rgba(255, 255, 255, 0.642);
-        }
+    .non-gradient {
+      width: 19rem;
     }
-
-    .leftBtn {
-        left: 42%;
-        transform: translateY(-50%);
+    img,
+    .carousalCards {
+      width: 100%;
     }
+  }
 
-    .rightBtn {
-        right: 42%;
-        transform: translateY(-50%);
-    }
+  .leftBtn,
+  .rightBtn {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 0.8em;
+    color: #ffffffd4;
+    background-color: #280909aa;
+    border-radius: 50%;
+    transition: all 0.5s ease-in;
+  }
+
+  .leftBtn {
+    left: 42%;
+    transform: translateY(-50%);
+  }
+
+  .rightBtn {
+    right: 42%;
+    transform: translateY(-50%);
+  }
 }
 
 .carousal-title {
-    position: absolute;
-    top: 0.5em;
-    left: 0.1em;
-    color: rgb(242, 242, 242);
-    background-color: rgba(16, 16, 16, 0.256);
-    width: fit-content;
-    padding: 0.1em 0.3em;
-    font-weight: 500;
+  position: absolute;
+  top: 0.5em;
+  left: 0.1em;
+  color: rgb(242, 242, 242);
+  background-color: rgba(16, 16, 16, 0.256);
+  width: fit-content;
+  padding: 0.1em 0.3em;
+  font-weight: 500;
 }
 
 .carousal-subtitle {
-    position: absolute;
-    top: 5em;
-    left: 0.1em;
-    color: rgb(242, 242, 242);
-    background-color: rgba(16, 16, 16, 0.256);
-    width: 50%;
-    padding: 0.5em 0.5em;
-    line-height: 1.4em;
+  position: absolute;
+  top: 5em;
+  left: 0.1em;
+  color: rgb(242, 242, 242);
+  background-color: rgba(16, 16, 16, 0.256);
+  width: 50%;
+  padding: 0.5em 0.5em;
+  line-height: 1.4em;
 }
 
 .carousel-buttons {
-    position: absolute;
-    bottom: 3em;
-    left: 1em;
-    display: flex;
-    justify-content: flex-start;
-    gap: 1em;
-    align-items: center;
+  position: absolute;
+  bottom: 3em;
+  left: 1em;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  align-items: center;
 
-    .outlined-icon {
-        color: white;
-        cursor: pointer;
-        padding: 0.5em;
-        border-radius: 50%;
-        background-color: transparent;
-        transition: all 0.5s ease-out;
+  .outlined-icon {
+    color: white;
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 0.5s ease-out;
 
-        &:hover {
-            background-color: #fad4d4;
-            color: #dd0707;
-        }
+    &:hover {
+      background-color: #fad4d4;
+      color: #dd0707;
     }
+  }
 
-    .circular-progress {
-        position: relative;
+  .circular-progress {
+    position: relative;
+    transition: all 1s ease-in;
 
-        .vote-progress {
-            border-radius: 50%;
-            box-shadow: 0px 1px 3px 2px rgba(103, 103, 103, 0.384);
-            padding: 0.1em;
-        }
-        .vote-progress-text {
-            position: absolute;
-            font-size: 0.9em;
-            left: 20%;
-            top: 30%;
-            transform: translate(50%);
-        }
+    .vote-progress {
+      border-radius: 50%;
+      box-shadow: 0px 1px 3px 2px rgba(103, 103, 103, 0.384);
+      padding: 0.1em;
     }
+    .vote-progress-text {
+      position: absolute;
+      font-size: 0.9em;
+      left: 20%;
+      top: 30%;
+      transform: translate(50%);
+    }
+  }
+}
+
+.carousal-container .carousal-inner .topRatedCards {
+  object-fit: scale-down;
+  position: absolute;
+  top: -20em;
+}
+
+.similar-items-card .carousal-container .carousal-inner .likesCards {
+  width: 13rem;
+  object-fit: scale-down;
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 
 export const GlobalContext = createContext();
@@ -14,22 +14,22 @@ const Context = ({ children }) => {
     setCurrentPage(1);
   };
 
-  return (
-    <GlobalContext.Provider
-      value={{
-        handleInputChange,
-        searchInput,
-        isLoggedIn,
-        setIsLoggedIn,
-        totalItems,
-        setTotalItems,
-        currentPage,
-        setCurrentPage,
-        setSearchInput,
-      }}>
-      {children}
-    </GlobalContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      handleInputChange,
+      searchInput,
+      isLoggedIn,
+      setIsLoggedIn,
+      totalItems,
+      setTotalItems,
+      currentPage,
+      setCurrentPage,
+      setSearchInput,
+    }),
+    [searchInput, isLoggedIn, totalItems, currentPage]
   );
+
+  return <GlobalContext.Provider value={contextValue}>{children}</GlobalContext.Provider>;
 };
 
 Context.propTypes = {

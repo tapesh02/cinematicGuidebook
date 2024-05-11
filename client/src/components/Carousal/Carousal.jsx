@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 
 import { CircularProgress } from "@mui/material";
 import { Button, Typography } from "@mui/material";
@@ -6,11 +6,12 @@ import { Button, Typography } from "@mui/material";
 import { MdBookmarkAdd } from "react-icons/md";
 import { IoMdShare, IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import PropTypes from "prop-types";
+import ImageComp from "../Helpers/ImageComp";
 
-const Carousel = ({ slides, multiple }) => {
+const Carousel = ({ slides, multiple, className }) => {
   const [curIndex, setCurIndex] = useState(0);
 
-  const itemsPerPage = multiple ? 6 : 1;
+  const itemsPerPage = multiple ? 5 : 1;
 
   const totalItems = slides.length;
 
@@ -24,9 +25,11 @@ const Carousel = ({ slides, multiple }) => {
     setCurIndex((prevIndex) => (prevIndex === 0 ? totalPages - 1 : prevIndex - 1));
   }, [totalPages]);
 
+  const itemsToShow = slides?.slice(curIndex * itemsPerPage, (curIndex + 1) * itemsPerPage);
+
   return (
     <div className="carousal-container">
-      {slides.length > 0 && (
+      {itemsToShow.length > 0 && (
         <>
           <IoIosArrowBack className="leftBtn" onClick={leftHandle} />
           <IoIosArrowForward className="rightBtn" onClick={rightHandle} />
@@ -35,14 +38,19 @@ const Carousel = ({ slides, multiple }) => {
 
       <div className="carousal-inner">
         <div>
-          {slides?.slice(curIndex * itemsPerPage, (curIndex + 1) * itemsPerPage).map((slide) => {
-            const { backdrop_path, id, original_title, original_name, overview, vote_average } = slide;
+          {itemsToShow.map((slide) => {
+            const { backdrop_path, poster_path, id, original_title, original_name, overview, vote_average } = slide;
             const _overview = `${overview.slice(0, 120)}...`;
+            const path = multiple ? poster_path : backdrop_path;
             return (
               <React.Fragment key={id}>
-                <div className={!multiple ? "overlay-gradient" : ""}></div>
+                <div className={!multiple ? "overlay-gradient" : "non-gradient"}></div>
 
-                <img src={`https://image.tmdb.org/t/p/original${backdrop_path}`} alt="img" />
+                <ImageComp
+                  src={`https://image.tmdb.org/t/p/original${path}`}
+                  alt={original_name}
+                  className={className}
+                />
 
                 {!multiple && (
                   <>
@@ -82,8 +90,10 @@ const Carousel = ({ slides, multiple }) => {
   );
 };
 
-Carousel.prototype = {
+Carousel.propTypes = {
   slides: PropTypes.array,
+  multiple: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default Carousel;
