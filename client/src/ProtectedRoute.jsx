@@ -7,13 +7,12 @@ const ProtectedRoute = (props) => {
   const navigate = useNavigate();
   const { setIsLoggedIn } = useContext(GlobalContext);
 
-  const handleLocalStorage = () => {
-    const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
-    setIsLoggedIn(isAuthenticated);
-    !isAuthenticated && navigate("/signin");
-  };
-
   useEffect(() => {
+    const handleLocalStorage = () => {
+      const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
+      setIsLoggedIn(isAuthenticated);
+      !isAuthenticated && navigate("/signin");
+    };
     handleLocalStorage();
     window.addEventListener("storage", handleLocalStorage);
     return () => window.removeEventListener("storage", handleLocalStorage);
