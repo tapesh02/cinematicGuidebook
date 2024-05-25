@@ -124,3 +124,51 @@
   width: 13rem;
   object-fit: scale-down;
 }
+
+//mobile styles
+.mcardBg {
+  .carousal-container {
+    margin-bottom: -6rem;
+    .leftBtn {
+      top: 30%;
+      left: 0%;
+      width: 20px;
+      height: 20px;
+    }
+
+    .rightBtn {
+      top: 30%;
+      right: 0%;
+      width: 20px;
+      height: 20px;
+    }
+
+    .carousal-title {
+      font-size: 1.2rem;
+    }
+    .carousal-subtitle {
+      display: none;
+    }
+
+    .carousel-buttons {
+      gap: 0.3em;
+      top: 20%;
+      bottom: 0;
+      button {
+        font-size: 0.6rem;
+        width: max-content;
+      }
+      .circular-progress {
+        transform: scale(0.8);
+        .vote-progress {
+          width: 2.5rem !important;
+          height: 2.5rem !important;
+          top: 10%;
+        }
+        .vote-progress-text {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}

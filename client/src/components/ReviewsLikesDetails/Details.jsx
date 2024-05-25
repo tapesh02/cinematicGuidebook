@@ -67,7 +67,7 @@ const Details = ({ item }) => {
             <Typography variant="body1">
               <span className="details-header">Revenue :</span> {convertToUsDollar(revenue)}
             </Typography>
-            <div style={{ display: "flex" }}>
+            <div className="production-house-names">
               <span className="details-header">Production House :</span>
               <RenderProductionName productionName={production_companies} />
             </div>
