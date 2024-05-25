@@ -79,10 +79,10 @@ export default function MobileNavBar() {
   );
 
   return (
-    <div className="mobileMenu">
+    <div className="mobile-menu">
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <BsMenuButtonWideFill onClick={toggleDrawer(anchor, true)} className="menuIcon">
+          <BsMenuButtonWideFill onClick={toggleDrawer(anchor, true)} className="menu-icon">
             {anchor}
           </BsMenuButtonWideFill>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
@@ -91,7 +91,7 @@ export default function MobileNavBar() {
           <NavLink>
             <img src={logo} alt="logo" />
           </NavLink>
-          <AiOutlineSearch className="menuIcon" />
+          <AiOutlineSearch className="menu-icon" />
         </React.Fragment>
       ))}
     </div>
