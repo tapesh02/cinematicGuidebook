@@ -12,15 +12,15 @@ const Likes = ({ item }) => {
   const itemId = location.pathname.split("/")[3];
 
   const [loading, setLoading] = useState(true);
-  const [similarItems, setSimilarItems] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
-    const showSimilarItems = async () => {
-      const _similarItems = await fetchById(`${pathName}`, `${itemId}`, "/recommendations");
-      setSimilarItems(_similarItems.results);
+    const getRecommendations = async () => {
+      const _recommendations = await fetchById(`${pathName}`, `${itemId}`, "/recommendations");
+      setRecommendations(_recommendations.results);
       setLoading(false);
     };
-    showSimilarItems();
+    getRecommendations();
   }, [pathName, itemId]);
 
   return (
@@ -29,7 +29,7 @@ const Likes = ({ item }) => {
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>{renderSkeleton(6)}</div>
       ) : (
         <div className="similar-items-card">
-          <Carousel slides={similarItems} multiple className="likesCards" />
+          <Carousel slides={recommendations} multiple className="likesCards" />
         </div>
       )}
     </>

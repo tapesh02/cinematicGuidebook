@@ -1,38 +1,62 @@
 .movieTVHeaderMain {
-    padding: 1.3em;
-    .movieTVheaderText {
-        text-transform: capitalize;
-        text-align: center;
-    }
+  padding: 1.3em;
+  .movieTVheaderText {
+    text-transform: capitalize;
+    text-align: center;
+  }
 }
 .searchInputMain {
-    display: inline-flex;
-    justify-content: center;
-    align-items: start;
+  display: inline-flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 3em;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  margin-bottom: 2em;
+
+  .searchInput {
     width: 100%;
-    height: 3em;
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-    margin-bottom: 2em;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding-left: 2em;
+    font: inherit;
+    background-color: transparent;
+  }
 
-    .searchInput {
-        width: 100%;
-        height: 100%;
-        border: none;
-        outline: none;
-        padding-left: 2em;
-        font: inherit;
-        background-color: transparent;
+  .cancel-icon {
+    margin-right: 1em;
+    margin-top: 0.8em;
+    color: red;
+    cursor: pointer;
+
+    &:hover {
+      color: black;
     }
+  }
+}
 
-    .cancel-icon {
-        margin-right: 1em;
-        margin-top: 0.8em;
-        color: red;
-        cursor: pointer;
-
-        &:hover {
-            color: black;
-        }
+@include mobile {
+  .moviesBg {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .movieTVHeaderMain {
+    padding: 0.2em;
+    padding-bottom: 1em;
+    .movieTVheaderText {
+      font-size: 1.3rem;
     }
+  }
+
+  .searchInputMain {
+    border-radius: 10px;
+    height: 2.5rem;
+    // add below style only when scroll is true
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: 3;
+  }
 }

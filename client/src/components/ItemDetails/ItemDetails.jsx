@@ -11,7 +11,7 @@ import { MdOutlineHd } from "react-icons/md";
 import { SiDolby } from "react-icons/si";
 
 import { Button, Card, CardMedia, Typography } from "@mui/material";
-import ExtraLikesDetails from "../ExtraLikesDetails/ExtraLikesDetails";
+import ReviewsLikesDetails from "../ReviewsLikesDetails/ReviewsLikesDetails";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -71,7 +71,7 @@ const ItemDetails = () => {
   return (
     <div>
       <RenderItemDetails />
-      <ExtraLikesDetails item={item} />
+      <ReviewsLikesDetails item={item} />
     </div>
   );
 };
