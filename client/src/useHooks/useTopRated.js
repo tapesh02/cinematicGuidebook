@@ -21,7 +21,7 @@ const useTopRated = (type) => {
         };
 
         const response = await axios.request(requestConfig);
-        if (response && response.data && response.data.results) {
+        if (response?.data?.results) {
           setTopRated(response.data.results);
         } else {
           setError("No data found.");
