@@ -18,7 +18,7 @@ const NavBar = () => {
 
   const [showMenuItem, setShowMenuItem] = useState(false);
 
-  const pageLinks = ["Home", "Movies", "TvShows"];
+  const pageLinks = ["Movies", "TvShows", "News"];
 
   return (
     <>
@@ -34,7 +34,7 @@ const NavBar = () => {
               {isLoggedIn && (
                 <Box className="nav-bar">
                   {pageLinks.map((page) => (
-                    <NavLink to={page.toLocaleLowerCase() === "home" ? "/" : page.toLocaleLowerCase()} key={page}>
+                    <NavLink to={page.toLocaleLowerCase()} key={page}>
                       <Button variant="outlined" color="secondary">
                         {page}
                       </Button>
