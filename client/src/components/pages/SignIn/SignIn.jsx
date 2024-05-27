@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { urlPath } from "../../../ApiHelpers";
+import { urlPath } from "../../../Helpers/ApiHelpers";
 import { GlobalContext } from "../../../useContext/Context";
 
 import { Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";

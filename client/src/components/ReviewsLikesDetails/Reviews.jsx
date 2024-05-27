@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { fetchById } from "../../ApiHelpers";
-import { Button,  Typography,  Rating } from "@mui/material";
+import { fetchById } from "../../Helpers/ApiHelpers";
+import { Button, Typography, Rating } from "@mui/material";
 
 const Reviews = () => {
   const location = useLocation();
