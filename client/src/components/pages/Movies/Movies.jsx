@@ -24,7 +24,6 @@ const Movies = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const _movies = await fetchMoviesTvShows("movie", searchInput, currentPage);
-      console.log(_movies.results);
       setMovies(_movies.results);
       setTotalItems(_movies.total_results);
       setIsLoading(false);

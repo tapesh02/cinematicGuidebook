@@ -32,7 +32,6 @@ const SignIn = () => {
           },
           withCredentials: true,
         });
-        console.log(response);
         navigate("/movies");
         sessionStorage.setItem("isAuthenticated", true);
         setIsLoggedIn(true);
