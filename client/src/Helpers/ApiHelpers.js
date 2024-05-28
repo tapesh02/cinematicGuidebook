@@ -34,7 +34,7 @@ export const fetchMoviesTvShows = async (type, searchInput, pageNumber) => {
 };
 
 export const fetchById = async (searchQuery, searchId, queryParams = "") => {
-  const url = `https://api.themoviedb.org/3/${searchQuery}/${searchId}${queryParams}`;
+  const url = `${process.env.REACT_APP_BASEPATH}/${searchQuery}/${searchId}${queryParams}`;
   try {
     const requestConfig = {
       method: "GET",

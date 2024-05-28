@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { fetchById } from "../../ApiHelpers";
-import { Button,  Typography,  Rating } from "@mui/material";
+import { fetchById } from "../../Helpers/ApiHelpers";
+import { Button, Typography, Rating } from "@mui/material";
+import { convertDate } from "../../Helpers/helperFunctions";
 
 const Reviews = () => {
   const location = useLocation();
@@ -15,16 +16,6 @@ const Reviews = () => {
     };
     getReviews();
   }, [itemId]);
-
-  const convertDate = (datetime) => {
-    const parseDate = Date.parse(datetime);
-    return new Intl.DateTimeFormat("en-GB", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }).format(parseDate);
-  };
 
   const RenderReviews = () => {
     return reviews.map((review) => {

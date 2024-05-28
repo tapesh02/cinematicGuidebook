@@ -1,36 +1,35 @@
 .homeBgOverlay {
-    background: url("../../../assets/images/cosmicsatisfaction.png");
-    width: 100%;
-    height: 100vh;
-    min-width: 100%;
-    min-height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: color;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    z-index: -1;
+  background: url("../../../assets/images/cosmicsatisfaction.png");
+  width: 100%;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: color;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: -1;
 }
 
 .homeBg {
-    //     border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1em;
-    h4 {
-        font-weight: 700;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+  h4 {
+    font-weight: 700;
+  }
 
-    span {
-        font-weight: 500;
-        text-transform: uppercase;
-    }
-    .exploreBtn {
-        padding: 0.5em 0;
-    }
+  span {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .exploreBtn {
+    padding: 0.5em 0;
+  }
 }

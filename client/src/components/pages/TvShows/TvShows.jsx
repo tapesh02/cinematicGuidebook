@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
-import { fetchMoviesTvShows } from "../../../ApiHelpers";
+import { fetchMoviesTvShows } from "../../../Helpers/ApiHelpers";
 
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 import Pagination from "../../Pagination/Pagination";
-import { RenderItems, renderSkeleton, renderTopRated } from "../../Helpers/MovieTVHelpers";
+import { RenderItems, renderSkeleton, renderTopRated } from "../../../Helpers/MovieTVHelpers";
 
 import { useTheme } from "@mui/material/styles";
 import { Typography, useMediaQuery } from "@mui/material";

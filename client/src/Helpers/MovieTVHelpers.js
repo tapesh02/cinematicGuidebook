@@ -1,6 +1,6 @@
 import { Skeleton, Typography } from "@mui/material";
-import Carousel from "../Carousal/Carousal";
-import Cards from "../Cards/Cards";
+import Carousel from "../components/Carousal/Carousal";
+import Cards from "../components/Cards/Cards";
 import PropTypes from "prop-types";
 
 export const renderTopRated = (searchInput, topRated) =>

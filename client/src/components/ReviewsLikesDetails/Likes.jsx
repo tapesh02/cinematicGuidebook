@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { fetchById } from "../../ApiHelpers";
+import { fetchById } from "../../Helpers/ApiHelpers";
 import Carousel from "../Carousal/Carousal";
-import { renderSkeleton } from "../Helpers/MovieTVHelpers";
+import { renderSkeleton } from "../../Helpers/MovieTVHelpers";
 
 const Likes = ({ item }) => {
   let location = useLocation();

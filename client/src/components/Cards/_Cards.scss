@@ -12,11 +12,17 @@
     flex-wrap: wrap;
     gap: 0.85em;
     row-gap: 1em;
+    justify-content: space-between;
 
     .card {
       width: 14rem;
       height: 20rem;
       border-radius: 8px;
+
+      &:last-of-type {
+        margin-right: auto;
+        margin-left: 1em;
+      }
 
       img {
         object-fit: cover;

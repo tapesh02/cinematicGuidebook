@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Spinner from "../../assets/icons/Spinner.svg";
-import ErrorImage from "../../assets/icons/ErrorImage.svg";
+import Spinner from "../assets/icons/Spinner.svg";
+import ErrorImage from "../assets/icons/ErrorImage.svg";
 import PropTypes from "prop-types";
 
 const ImageComp = ({ src, className }) => {

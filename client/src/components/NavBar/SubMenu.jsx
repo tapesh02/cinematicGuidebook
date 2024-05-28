@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 import { MdOutlinePlaylistPlay, MdOutlineManageAccounts } from "react-icons/md";
 import axios from "axios";
-import { urlPath } from "../../ApiHelpers";
+import { urlPath } from "../../Helpers/ApiHelpers";
 import { GlobalContext } from "../../useContext/Context";
 
 const SubMenu = (props) => {
