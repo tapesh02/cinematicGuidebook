@@ -29,7 +29,7 @@ export const fetchMoviesTvShows = async (type, searchInput, pageNumber) => {
     const response = await axios.request(requestConfig);
     return response.data;
   } catch (error) {
-    return console.log("error fetching movies or tv shows");
+    return console.log("error fetching movie or tv show");
   }
 };
 

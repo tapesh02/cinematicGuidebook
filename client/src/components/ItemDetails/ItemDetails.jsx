@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchById } from "../../helpers/ApiHelpers";
+import { fetchById } from "../../helpers/apiHelpers";
 import { useParams, useLocation } from "react-router-dom";
 
 import imageNotFound from "../../assets/images/imageNotFound.png";
