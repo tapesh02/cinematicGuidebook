@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { fetchById } from "../../helpers/ApiHelpers";
+import { fetchById } from "../../helpers/apiHelpers";
 import Carousel from "../Carousal/Carousal";
 import { renderSkeleton } from "../../helpers/MovieTVHelpers";
 

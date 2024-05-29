@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { fetchById } from "../../helpers/ApiHelpers";
+import { fetchById } from "../../helpers/apiHelpers";
 import { Button, Typography, Rating } from "@mui/material";
 import { convertDate } from "../../helpers/helperFunctions";
 

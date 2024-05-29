@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../useContext/Context";
-import { fetchMoviesTvShows } from "../../../helpers/ApiHelpers";
+import { fetchMoviesTvShows } from "../../../helpers/apiHelpers";
 
 import MoviesTVHeader from "../../MoviesTVHeader/MoviesTVHeader";
 
