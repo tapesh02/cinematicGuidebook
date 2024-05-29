@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { fetchById } from "../../Helpers/ApiHelpers";
+import { fetchById } from "../../helpers/ApiHelpers";
 import { Button, Typography, Rating } from "@mui/material";
-import { convertDate } from "../../Helpers/helperFunctions";
+import { convertDate } from "../../helpers/helperFunctions";
 
 const Reviews = () => {
   const location = useLocation();
