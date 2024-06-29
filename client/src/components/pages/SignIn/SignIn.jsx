@@ -1,15 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { urlPath } from "../../../helpers/apiHelpers";
-import { GlobalContext } from "../../../useContext/Context";
-
 import { Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useContext(GlobalContext);
 
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
@@ -32,9 +29,11 @@ const SignIn = () => {
           },
           withCredentials: true,
         });
-        navigate("/movies");
-        sessionStorage.setItem("isAuthenticated", true);
-        setIsLoggedIn(true);
+
+        if (response.status === 200) {
+          sessionStorage.setItem("isAuthenticated", true);
+          navigate("/movies");
+        }
       } catch (error) {
         console.log(error);
       }

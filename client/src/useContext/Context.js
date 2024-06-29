@@ -5,7 +5,7 @@ export const GlobalContext = createContext();
 
 const Context = ({ children }) => {
   const [searchInput, setSearchInput] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isAuthenticated"));
   const [totalItems, setTotalItems] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 

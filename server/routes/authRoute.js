@@ -19,16 +19,15 @@ export const signup = async (req, res) => {
     } else if (createPassword !== retypePassword) {
       res.status(422).json({ error: "Passwords do not match" });
     } else {
+      // Hash the password before saving it
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(createPassword, salt);
+
       const user = new User({
         username,
         email,
-        createPassword,
+        createPassword: hashedPassword,
       });
-
-      // Hash the password before saving it
-      const salt = await bcrypt.genSalt(10);
-      user.createPassword = await bcrypt.hash(createPassword, salt);
-
       const userRegistered = await user.save();
 
       if (userRegistered) {
@@ -52,10 +51,7 @@ export const signin = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (user) {
-      const isValidUser = await bcrypt.compare(
-        createPassword,
-        user.createPassword,
-      );
+      const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
       if (isValidUser) {
         const token = jwt.sign({ _id: user._id }, SECRETKEY);
         user.tokens = user.tokens.concat({ token });

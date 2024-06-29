@@ -9,13 +9,11 @@ const ProtectedRoute = (props) => {
 
   useEffect(() => {
     const handleLocalStorage = () => {
-      const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
-      setIsLoggedIn(isAuthenticated);
-      !isAuthenticated && navigate("/signin");
+      const isAuthenticated = sessionStorage.getItem("isAuthenticated");
+      !isAuthenticated ? navigate("/signin") : setIsLoggedIn(isAuthenticated);
     };
+
     handleLocalStorage();
-    window.addEventListener("storage", handleLocalStorage);
-    return () => window.removeEventListener("storage", handleLocalStorage);
   }, []);
 
   return <Component />;
