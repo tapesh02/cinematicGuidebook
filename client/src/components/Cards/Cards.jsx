@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import imageNotFound from "../../assets/images/imageNotFound.png";
 import { Link } from "react-router-dom";
-import ImageComp from "../../Helpers/ImageComp";
+import ImageComp from "../../helpers/ImageComp";
 
 const Cards = (props) => {
   const { cardImage, id, type } = props;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { MdLibraryBooks } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
-import { convertDate } from "../../../Helpers/helperFunctions";
+import { convertDate } from "../../../helpers/helperFunctions";
 
 const News = (props) => {
   const [news, setNews] = useState([]);

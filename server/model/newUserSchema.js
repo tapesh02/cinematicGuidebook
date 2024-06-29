@@ -13,10 +13,6 @@ const newUserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  retypePassword: {
-    type: String,
-    required: true,
-  },
   tokens: [
     {
       token: {

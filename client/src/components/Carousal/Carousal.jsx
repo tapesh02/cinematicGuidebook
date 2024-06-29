@@ -6,7 +6,7 @@ import { Button, Typography } from "@mui/material";
 import { MdBookmarkAdd } from "react-icons/md";
 import { IoMdShare, IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import PropTypes from "prop-types";
-import ImageComp from "../../Helpers/ImageComp";
+import ImageComp from "../../helpers/ImageComp";
 
 const Carousel = ({ slides, multiple, className }) => {
   const [curIndex, setCurIndex] = useState(0);
