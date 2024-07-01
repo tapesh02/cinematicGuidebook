@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, TextField, Typography } from "@mui/material";
 import { urlPath } from "../../../helpers/apiHelpers";
+import { validatePassword, validateEmail, validateUsername } from "../../../helpers/helperFunctions";
 
 const JoinUs = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const [isValid, setIsValid] = useState(false);
 
   const handleSignup = async () => {
     const URL = `${urlPath}/signup`;
@@ -37,6 +39,12 @@ const JoinUs = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (userName && email && password) {
+      return setIsValid(!validateUsername(userName) || !validateEmail(email) || !validatePassword(password));
+    }
+  }, [userName, email, password]);
 
   return (
     <>
@@ -82,7 +90,7 @@ const JoinUs = () => {
 
           <div className="signinSection4">
             <Button
-              disabled={!userName || !email || !password}
+              disabled={isValid || !userName || !email || !password}
               variant="contained"
               color="primary"
               onClick={handleSignup}>
