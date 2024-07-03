@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { urlPath } from "../../../helpers/apiHelpers";
+import { fetchUsers, urlPath } from "../../../helpers/apiHelpers";
 import { Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
+import { setSessionStorage } from "../../../helpers/helperFunctions";
 
 const SignIn = () => {
   const navigate = useNavigate();
-
   const [isChecked, setIsChecked] = useState(false);
-  const [email, setEmail] = useState("");
+  const [emailValue, setEmailValue] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSignin = async (event) => {
     event?.preventDefault();
     const URL = `${urlPath}/signin`;
 
     const reqBody = {
-      email: email,
+      email: emailValue,
       createPassword: password,
     };
 
-    if (email && password) {
+    if (emailValue && password) {
       try {
         const response = await axios.post(URL, reqBody, {
           headers: {
@@ -31,14 +32,30 @@ const SignIn = () => {
         });
 
         if (response.status === 200) {
-          sessionStorage.setItem("isAuthenticated", true);
-          navigate("/movies");
+          setSessionStorage("isAuthenticated", true);
+          window.dispatchEvent(new Event("storage"));
+          setIsAuthenticated(true);
         }
       } catch (error) {
         console.log(error);
       }
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const getUser = async () => {
+        const user = await fetchUsers();
+        setSessionStorage("username", user.username);
+        setSessionStorage("email", user.email);
+        navigate("/movies");
+      };
+
+      getUser();
+    } else {
+      console.log("not authenticated");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <>
@@ -67,7 +84,7 @@ const SignIn = () => {
               required
               variant="filled"
               onChange={(event) => {
-                setEmail(event.target.value);
+                setEmailValue(event.target.value);
               }}
             />
             <TextField
@@ -100,7 +117,7 @@ const SignIn = () => {
           </div>
           <div className="signinSection4">
             <Button
-              disabled={email?.length < 0 || !email.includes("@") || password?.length < 0}
+              disabled={emailValue?.length < 0 || !emailValue.includes("@") || password?.length < 0}
               variant="contained"
               color="primary"
               type="submit">

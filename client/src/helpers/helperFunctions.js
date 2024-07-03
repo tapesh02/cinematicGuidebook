@@ -26,3 +26,12 @@ export const validatePassword = (textInput) => {
   const isValid = textInput.match(passwordRegex);
   return !!isValid;
 };
+
+export const getSessionStorage = (key) => {
+  if (key) return sessionStorage.getItem(key);
+};
+
+export const setSessionStorage = (key, value) => {
+  if (key && value) return sessionStorage.setItem(key, value);
+  return console.log("error storing session value");
+};

@@ -1,10 +1,12 @@
 import { Button } from "@mui/material";
 import { FiCamera } from "react-icons/fi";
-import useFetchUser from "../../../useHooks/useFetchUser";
+
+import { getSessionStorage } from "../../../helpers/helperFunctions";
 
 const Profile = () => {
-  const { data } = useFetchUser();
-  const { email, username } = data;
+  const username = getSessionStorage("username");
+  const email = getSessionStorage("email");
+
   return (
     <div className="main-profile-bg">
       <h1>Welcome {username}</h1>
@@ -12,7 +14,7 @@ const Profile = () => {
 
       <div className="profile-wrapper">
         <div className="profile-img">
-          <img src="https://eu.ui-avatars.com/api/?name=Tapesh+Patel&size=250" alt="profile-img" />
+          <img src={`https://eu.ui-avatars.com/api/?name=${username}&size=250`} alt="profile-img" />
           <span className="camera-icon">
             <FiCamera size={30} />
           </span>
