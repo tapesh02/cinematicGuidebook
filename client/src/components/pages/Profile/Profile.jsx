@@ -1,7 +1,10 @@
 import { Button } from "@mui/material";
 import { FiCamera } from "react-icons/fi";
+import useFetchUser from "../../../useHooks/useFetchUser";
 
 const Profile = () => {
+  const { data } = useFetchUser();
+  console.log(data);
   return (
     <div className="main-profile-bg">
       <h1>Welcome Tapesh</h1>

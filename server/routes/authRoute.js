@@ -51,7 +51,10 @@ export const signin = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (user) {
-      const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
+      const isValidUser = await bcrypt.compare(
+        createPassword,
+        user.createPassword,
+      );
       if (isValidUser) {
         const token = jwt.sign({ _id: user._id }, SECRETKEY);
         user.tokens = user.tokens.concat({ token });
@@ -80,4 +83,26 @@ export const signin = async (req, res) => {
 export const signout = (req, res) => {
   res.cookie("signinToken", "", { maxAge: 1 });
   res.status(200).json({ message: "signout successfully" });
+};
+
+export const userRoute = async (req, res) => {
+  try {
+    const user = req.user;
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // You can customize what details you want to send back
+    const userDetails = {
+      username: user.username,
+      email: user.email,
+      // Add other details as required
+    };
+
+    res.status(200).json(userDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
