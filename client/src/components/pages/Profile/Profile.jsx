@@ -1,10 +1,13 @@
 import { Button } from "@mui/material";
 import { FiCamera } from "react-icons/fi";
+import useFetchUser from "../../../useHooks/useFetchUser";
 
 const Profile = () => {
+  const { data } = useFetchUser();
+  const { email, username } = data;
   return (
     <div className="main-profile-bg">
-      <h1>Welcome Tapesh</h1>
+      <h1>Welcome {username}</h1>
       <p>Start editing your personal details, add genres to fine tune movie or tv show recommendations</p>
 
       <div className="profile-wrapper">
@@ -18,13 +21,13 @@ const Profile = () => {
           <div className="profile-inputs-wrapper">
             <div className="profile-full-name">
               <label htmlFor="fullName">
-                <input type="text" />
+                <input type="text" value={username} />
                 Full name
               </label>
             </div>
             <div className="profile-email">
               <label htmlFor="email">
-                <input type="email" />
+                <input type="email" value={email} />
                 Email
               </label>
             </div>
