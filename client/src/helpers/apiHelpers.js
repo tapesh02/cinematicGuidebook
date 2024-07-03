@@ -1,4 +1,5 @@
 import { client } from "../client";
+import axios from "axios";
 
 export const urlPath =
   window.location.hostname === "localhost" ? "http://localhost:5000" : `${process.env.REACT_APP_API_URL}`;
@@ -41,5 +42,18 @@ export const fetchById = async (searchQuery, searchId, queryParams = "") => {
     return response.data;
   } catch (error) {
     return console.log("error fetching single item");
+  }
+};
+
+export const fetchUsers = async () => {
+  try {
+    const { data, status } = await axios.get(`${urlPath}/user`, {
+      withCredentials: true,
+    });
+    if (status === 200) {
+      return data;
+    }
+  } catch (error) {
+    throw new Error("Error getting user details");
   }
 };

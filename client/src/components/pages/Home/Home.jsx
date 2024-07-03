@@ -66,7 +66,7 @@ const Home = () => {
             </Button>
           </NavLink>
         </Box>
-        <div className={`cardsBg ${isMobile ? "mcardBg" : ""}`}>
+        <div className={`cardsBg homeCardBg ${isMobile ? "mcardBg" : ""}`}>
           <div className="cardMain">
             {trending?.slice(0, 8).map((trending) => {
               const { id, poster_path } = trending;

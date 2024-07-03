@@ -8,17 +8,17 @@ import MobileNavBar from "./MobileNavBar";
 import logo from "../../assets/logos/TransparentLogo.svg";
 import SubMenu from "./SubMenu";
 
-import { FaUserCircle } from "react-icons/fa";
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
+import { getSessionStorage } from "../../helpers/helperFunctions";
 
 const NavBar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { isLoggedIn } = useContext(GlobalContext);
-
   const [showMenuItem, setShowMenuItem] = useState(false);
-
   const pageLinks = ["Movies", "TvShows", "News"];
+
+  const username = getSessionStorage("username");
 
   return (
     <>
@@ -40,7 +40,13 @@ const NavBar = () => {
                       </Button>
                     </NavLink>
                   ))}
-                  <FaUserCircle size={30} onClick={() => setShowMenuItem(!showMenuItem)} className="menu-icon" />
+                  <button className="profile-img-icon" onClick={() => setShowMenuItem(!showMenuItem)}>
+                    <img
+                      src={`https://eu.ui-avatars.com/api/?name=${username}&size=250`}
+                      alt="profile-img"
+                      className="user-icon"
+                    />
+                  </button>
                   {showMenuItem && <SubMenu showMenuItem={showMenuItem} setShowMenuItem={setShowMenuItem} />}
                 </Box>
               )}

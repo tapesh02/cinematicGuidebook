@@ -32,4 +32,17 @@
   .exploreBtn {
     padding: 0.5em 0;
   }
+
+  .homeCardBg {
+    width: 55%;
+
+    .cardMain {
+      justify-content: space-evenly;
+      .card {
+        &:last-of-type {
+          margin: inherit;
+        }
+      }
+    }
+  }
 }
