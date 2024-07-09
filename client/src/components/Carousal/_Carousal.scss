@@ -172,3 +172,10 @@
     }
   }
 }
+@include tablet {
+  .mcardBg {
+    .carousal-container {
+      margin-bottom: 1rem;
+    }
+  }
+}

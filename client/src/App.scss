@@ -21,25 +21,25 @@ $breakpoints: (
 );
 
 @mixin small-mobile {
-  @media only screen and (max-width: map-get($breakpoints, "small-mobile")) {
+  @media only screen and (min-width: 0) and (max-width: map-get($breakpoints, "small-mobile")) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media only screen and (max-width: map-get($breakpoints, "mobile")) {
+  @media only screen and (min-width: map-get($breakpoints, "small-mobile")) and (max-width: map-get($breakpoints, "mobile")) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media only screen and (max-width: map-get($breakpoints, "tablet")) {
+  @media only screen and (min-width: map-get($breakpoints, "mobile")) and (max-width: map-get($breakpoints, "tablet")) {
     @content;
   }
 }
 
 @mixin laptop {
-  @media only screen and (max-width: map-get($breakpoints, "laptop")) {
+  @media only screen and (min-width: map-get($breakpoints, "tablet")) and (max-width: map-get($breakpoints, "laptop")) {
     @content;
   }
 }
