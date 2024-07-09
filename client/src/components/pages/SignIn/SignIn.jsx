@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { fetchUsers, urlPath } from "../../../helpers/apiHelpers";
-import { Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
+import { Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography, Alert } from "@mui/material";
 import { setSessionStorage } from "../../../helpers/helperFunctions";
 
 const SignIn = () => {
@@ -48,7 +48,11 @@ const SignIn = () => {
         const user = await fetchUsers();
         setSessionStorage("username", user.username);
         setSessionStorage("email", user.email);
-        navigate("/movies");
+
+        const timeOut = setTimeout(() => {
+          navigate("/movies");
+        }, 3000);
+        return () => clearTimeout(timeOut);
       };
 
       getUser();
@@ -76,8 +80,14 @@ const SignIn = () => {
               Sign In
             </Typography>
           </div>
+          {isAuthenticated && (
+            <Alert className="signin-alert-banner" variant="filled" severity="success">
+              Sign in Successful
+            </Alert>
+          )}
           <div className="signinSection2">
             <TextField
+              disabled={isAuthenticated}
               label="Email"
               type="email"
               autoComplete="false"
@@ -88,6 +98,7 @@ const SignIn = () => {
               }}
             />
             <TextField
+              disabled={isAuthenticated}
               label="Password"
               type="password"
               autoComplete="false"
@@ -117,7 +128,7 @@ const SignIn = () => {
           </div>
           <div className="signinSection4">
             <Button
-              disabled={emailValue?.length < 0 || !emailValue.includes("@") || password?.length < 0}
+              disabled={emailValue?.length < 0 || !emailValue.includes("@") || password?.length < 0 || isAuthenticated}
               variant="contained"
               color="primary"
               type="submit">

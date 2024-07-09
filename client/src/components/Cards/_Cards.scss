@@ -65,3 +65,28 @@
     }
   }
 }
+
+.homeCardBg {
+  .cardMain {
+    justify-content: space-evenly;
+    .card {
+      &:last-of-type {
+        margin: inherit;
+      }
+    }
+  }
+}
+
+@include laptop {
+  .homeBg {
+    .homeCardBg {
+      .cardMain {
+        justify-content: flex-start;
+        .card {
+          width: 11rem;
+          height: 16rem;
+        }
+      }
+    }
+  }
+}
