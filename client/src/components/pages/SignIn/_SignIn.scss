@@ -107,3 +107,31 @@
     }
   }
 }
+
+.signin-alert-banner {
+  position: relative;
+  width: 100%;
+  top: -1em;
+  opacity: 1;
+  animation: fade 6s infinite;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0;
+    background-color: #2e7d3290;
+  }
+  75% {
+    opacity: 0.7;
+    background-color: #2e7d32b0;
+  }
+  50% {
+    opacity: 0.5;
+    background-color: #2e7d32c8;
+  }
+  25% {
+    opacity: 1;
+    background-color: #2e7d32;
+  }
+}
