@@ -1,11 +1,7 @@
 import jwt from "jsonwebtoken";
-import express from "express";
-import cookieParser from "cookie-parser";
 import { User } from "../model/newUserSchema.js";
 
 const SECRETKEY = process.env.SECRETKEY;
-const app = express();
-app.use(cookieParser());
 
 const authenticate = async (req, res, next) => {
   try {
