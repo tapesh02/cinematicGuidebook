@@ -51,6 +51,7 @@ export const fetchUsers = async () => {
       withCredentials: true,
     });
     if (status === 200) {
+      console.log(data);
       return data;
     }
   } catch (error) {
