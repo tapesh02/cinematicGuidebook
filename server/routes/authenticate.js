@@ -5,6 +5,7 @@ const SECRETKEY = process.env.SECRETKEY;
 
 const authenticate = async (req, res, next) => {
   try {
+    //USE 1 for test and 0 for prod
     const authHeader = req.headers.cookie.split(";")[0];
     const token = authHeader.split("=")[1];
 

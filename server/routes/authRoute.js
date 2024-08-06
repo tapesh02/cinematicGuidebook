@@ -51,10 +51,7 @@ export const signin = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (user) {
-      const isValidUser = await bcrypt.compare(
-        createPassword,
-        user.createPassword,
-      );
+      const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
       if (isValidUser) {
         const token = jwt.sign({ _id: user._id }, SECRETKEY);
         user.tokens = user.tokens.concat({ token });
@@ -62,7 +59,7 @@ export const signin = async (req, res) => {
 
         res.cookie("signinToken", token, {
           httpOnly: true,
-          sameSite: "strict",
+          sameSite: "lax",
           secure: "true",
           maxAge: (2 * 60 * 60 + 3 * 60 + 10) * 1000,
         });
