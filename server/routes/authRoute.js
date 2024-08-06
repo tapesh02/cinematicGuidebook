@@ -50,24 +50,26 @@ export const signin = async (req, res) => {
 
     const user = await User.findOne({ email: email });
 
-    if (user) {
-      const isValidUser = await bcrypt.compare(createPassword, user.createPassword);
-      if (isValidUser) {
-        const token = jwt.sign({ _id: user._id }, SECRETKEY);
-        user.tokens = user.tokens.concat({ token });
-        await user.save();
+    if (!user) {
+      return res.status(400).json({ error: "Invalid credentials" });
+    }
+    const isValidUser = await bcrypt.compare(
+      createPassword,
+      user.createPassword,
+    );
+    if (isValidUser) {
+      const token = jwt.sign({ _id: user._id }, SECRETKEY);
+      user.tokens = user.tokens.concat({ token });
+      await user.save();
 
-        res.cookie("signinToken", token, {
-          httpOnly: true,
-          sameSite: "none",
-          secure: true,
-          maxAge: (2 * 60 * 60 + 3 * 60 + 10) * 1000,
-        });
+      res.cookie("signinToken", token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        maxAge: (2 * 60 * 60 + 3 * 60 + 10) * 1000,
+      });
 
-        res.status(200).json({ message: "Sign-in successful" });
-      } else {
-        res.status(400).json({ error: "Invalid credentials" });
-      }
+      res.status(200).json({ message: "Sign-in successful" });
     } else {
       res.status(400).json({ error: "Invalid credentials" });
     }
@@ -94,10 +96,37 @@ export const userRoute = async (req, res) => {
     const userDetails = {
       username: user.username,
       email: user.email,
+      phoneNumber: user.phoneNumber,
+      country: user.country,
+      genre: user.genre,
       // Add other details as required
     };
 
     res.status(200).json(userDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const updateUserRoute = async (req, res) => {
+  try {
+    const { email, username, phoneNumber, country, genre } = req.body;
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update the user's details
+    if (username !== undefined) user.username = username;
+    if (phoneNumber !== undefined) user.phoneNumber = phoneNumber;
+    if (country !== undefined) user.country = country;
+    if (genre !== undefined) user.genre = genre;
+
+    await user.save();
+
+    res.status(200).json({ message: "User updated successfully", user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });

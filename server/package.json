@@ -18,13 +18,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "format": "prettier-eslint \"src/**/*.js\"",
     "lint": "eslint . --ext .js && echo -e \"\n\n\u001b[32mNo errors or warnings found\u001b[0m\"",
     "server": "npm run lint && nodemon index.js"
   },
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.2.0",
+    "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3"
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.1.0",
+    "prettier-eslint": "^16.1.2",
+    "prettier-eslint-cli": "^8.0.1"
   }
 }

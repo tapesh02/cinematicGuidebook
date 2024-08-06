@@ -48,6 +48,9 @@ const SignIn = () => {
         const user = await fetchUsers();
         setSessionStorage("username", user.username);
         setSessionStorage("email", user.email);
+        setSessionStorage("phoneNumber", user.phoneNumber);
+        setSessionStorage("country", user.country);
+        setSessionStorage("genre", user.genre);
 
         const timeOut = setTimeout(() => {
           navigate("/movies");

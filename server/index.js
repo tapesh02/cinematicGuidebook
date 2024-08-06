@@ -4,7 +4,13 @@ import cors from "cors";
 
 import { getConnection } from "./database/databaseConnection.js";
 import authenticate from "./routes/authenticate.js";
-import { signup, signin, signout, userRoute } from "./routes/authRoute.js";
+import {
+  signup,
+  signin,
+  signout,
+  userRoute,
+  updateUserRoute,
+} from "./routes/authRoute.js";
 
 const app = express();
 
@@ -27,6 +33,7 @@ app.post("/signup", signup);
 app.post("/signin", signin);
 app.get("/signout", signout);
 app.get("/user", authenticate, userRoute);
+app.post("/user", authenticate, updateUserRoute);
 
 const PORT = process.env.PORT || 5000;
 

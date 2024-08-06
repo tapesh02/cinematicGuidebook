@@ -73,6 +73,12 @@
             outline: none;
             border: none;
             font-size: large;
+
+            &:disabled {
+              background-color: #b8b8b8;
+              color: #282828;
+              cursor: not-allowed;
+            }
           }
         }
       }

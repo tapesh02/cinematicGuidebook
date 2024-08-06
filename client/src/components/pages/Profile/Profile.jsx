@@ -6,6 +6,9 @@ import { getSessionStorage } from "../../../helpers/helperFunctions";
 const Profile = () => {
   const username = getSessionStorage("username");
   const email = getSessionStorage("email");
+  const phoneNumber = getSessionStorage("phoneNumber");
+  const country = getSessionStorage("country");
+  const genre = getSessionStorage("genre");
 
   return (
     <div className="main-profile-bg">
@@ -23,31 +26,31 @@ const Profile = () => {
           <div className="profile-inputs-wrapper">
             <div className="profile-full-name">
               <label htmlFor="fullName">
-                <input type="text" value={username} />
+                <input type="text" value={username}/>
                 Full name
               </label>
             </div>
             <div className="profile-email">
               <label htmlFor="email">
-                <input type="email" value={email} />
+                <input type="email" value={email} disabled/>
                 Email
               </label>
             </div>
             <div className="profile-phone">
               <label htmlFor="phone">
-                <input type="text" />
+                <input type="text" value={phoneNumber}/>
                 Phone number
               </label>
             </div>
             <div className="profile-location">
               <label htmlFor="location">
-                <input type="text" />
-                Location
+                <input type="text" value={country}/>
+                Country
               </label>
             </div>
             <div className="profile-genre">
               <label htmlFor="genre">
-                <input type="text" />
+                <input type="text"  value={genre}/>
                 Genre
               </label>
             </div>

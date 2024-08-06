@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 
 const newUserSchema = new mongoose.Schema({
+  tokens: [
+    {
+      token: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   username: {
     type: String,
     required: true,
@@ -11,16 +19,16 @@ const newUserSchema = new mongoose.Schema({
   },
   createPassword: {
     type: String,
-    required: true,
   },
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  phoneNumber: {
+    type: String,
+  },
+  country: {
+    type: String,
+  },
+  genre: {
+    type: String,
+  },
 });
 
 export const User = mongoose.model("newUser", newUserSchema);
